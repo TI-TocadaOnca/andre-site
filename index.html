@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContabilidadeTotal - Do Básico ao Avançado em Tocantins</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        /* Define Custom Color Palette using CSS Variables */
+        :root {
+            --color-primary: #1E40AF; /* blue-800 */
+            --color-primary-hover: #1D4ED8; /* blue-700 */
+            --color-secondary: #3B82F6; /* blue-500 */
+            --color-accent: #60A5FA; /* blue-400 */
+            --color-text-base: #1F2937; /* gray-800 */
+            --color-text-muted: #4B5563; /* gray-600 */
+            --color-text-inverted: #FFFFFF;
+            --color-bg-main: #F9FAFB; /* gray-50 */
+            --color-bg-card: #FFFFFF;
+            --color-bg-dark: #111827; /* gray-900 */
+            --color-bg-header-footer: #1F2937; /* gray-800 */
+            --color-border-light: #E5E7EB; /* gray-200 */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-text-base);
+            background-color: var(--color-bg-main);
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+         /* Simple pulse animation for key CTAs */
+         .cta-pulse:hover {
+            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+         }
+
+         @keyframes pulse {
+             0%, 100% { transform: scale(1.02); }
+             50% { transform: scale(1.05); }
+         }
+
+        /* Ensure AOS animations only happen once */
+        [data-aos] {
+            /* transition-delay: 50ms; */ /* Optional: slight delay */
+        }
+
+    </style>
+
+    <!-- Configure Tailwind to use CSS Variables -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        'primary-hover': 'var(--color-primary-hover)',
+                        secondary: 'var(--color-secondary)',
+                        accent: 'var(--color-accent)',
+                        'text-base': 'var(--color-text-base)',
+                        'text-muted': 'var(--color-text-muted)',
+                        'text-inverted': 'var(--color-text-inverted)',
+                        'bg-main': 'var(--color-bg-main)',
+                        'bg-card': 'var(--color-bg-card)',
+                        'bg-dark': 'var(--color-bg-dark)',
+                        'bg-header-footer': 'var(--color-bg-header-footer)',
+                        'border-light': 'var(--color-border-light)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header x-data="{ mobileMenuOpen: false }" class="bg-bg-header-footer text-text-inverted shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <a href="#" class="text-2xl font-bold">Contabilidade<span class="text-accent">Total</span></a>
+                <p class="text-xs text-gray-400">Do Básico ao Avançado - Especializado para o Tocantins</p>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-7 items-center">
+                <a href="#inicio" class="hover:text-accent transition duration-200">Início</a>
+                <a href="#legislacao" class="hover:text-accent transition duration-200">Legislação</a>
+                <a href="#plano-estudos" class="hover:text-accent transition duration-200">Plano de Estudos</a>
+                <a href="#roteiro" class="hover:text-accent transition duration-200">Roteiro de Aprendizado</a>
+                <a href="#recursos" class="hover:text-accent transition duration-200">Fontes e Recursos</a>
+                <a href="#bibliografia" class="hover:text-accent transition duration-200">Bibliografia</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path :class="{'hidden': mobileMenuOpen, 'inline-flex': !mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        <path :class="{'hidden': !mobileMenuOpen, 'inline-flex': mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden bg-gray-700" @click.away="mobileMenuOpen = false">
+             <a href="#inicio" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Início</a>
+             <a href="#legislacao" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Legislação</a>
+             <a href="#plano-estudos" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Plano de Estudos</a>
+             <a href="#roteiro" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Roteiro de Aprendizado</a>
+             <a href="#recursos" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Fontes e Recursos</a>
+             <a href="#bibliografia" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Bibliografia</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="relative min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-text-inverted" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');">
+            <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
+            <div class="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center text-center flex-1">
+                <h1 data-aos="fade-down" data-aos-delay="100" class="text-4xl md:text-6xl font-bold mb-5 leading-tight drop-shadow-md">Domine a Contabilidade<br>do Básico ao Avançado</h1>
+                <p data-aos="fade-up" data-aos-delay="200" class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-gray-200 drop-shadow-sm">Um guia completo para formação em contabilidade, com foco na legislação brasileira e nas particularidades do estado do Tocantins.</p>
+                <div data-aos="fade-up" data-aos-delay="300" class="space-x-0 space-y-4 sm:space-y-0 sm:space-x-5 mb-8">
+                    <a href="#plano-estudos" class="inline-block bg-secondary hover:bg-accent text-white font-semibold py-3 px-9 rounded-lg shadow-lg transition duration-300 transform hover:scale-105 cta-pulse">
+                        Ver Plano de Estudos
+                    </a>
+                    <a href="#roteiro" class="inline-block bg-gray-100 hover:bg-gray-200 text-text-base font-semibold py-3 px-9 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
+                        Roteiro de Aprendizado
+                    </a>
+                </div>
+                <span class="animate-bounce mt-4">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="mx-auto text-white drop-shadow-lg" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 5v14m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </div>
+        </section>
+
+        <!-- O que oferecemos Section -->
+        <section id="features" class="py-20 lg:py-28 bg-bg-main">
+            <div class="container mx-auto px-6 text-center">
+                <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-center mb-16 text-primary">O que oferecemos</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature Card 1 -->
+                    <div data-aos="fade-up" data-aos-delay="100" class="bg-bg-card p-7 rounded-xl shadow-md hover:shadow-lg text-center transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"> <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /> </svg>
+                        <h3 id="legislacao" class="text-xl font-semibold mb-3 text-primary">Legislação Contábil</h3>
+                        <p class="text-text-muted mb-5 text-sm leading-relaxed">Normas e leis que regem a contabilidade no Brasil e Tocantins, incluindo NBC, pronunciamentos do CPC e legislação tributária.</p>
+                        <a href="#" class="text-secondary hover:text-primary font-medium text-sm group transition duration-200"> Saiba mais <span class="group-hover:ml-1 transition-all duration-200">&rarr;</span></a>
+                    </div>
+                    <!-- Feature Card 2 -->
+                    <div data-aos="fade-up" data-aos-delay="200" class="bg-bg-card p-7 rounded-xl shadow-md hover:shadow-lg text-center transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /> </svg>
+                        <h3 id="plano-estudos" class="text-xl font-semibold mb-3 text-primary">Plano de Estudos</h3>
+                        <p class="text-text-muted mb-5 text-sm leading-relaxed">Estrutura progressiva, dos fundamentos básicos aos tópicos avançados, com disciplinas essenciais e competências.</p>
+                        <a href="#" class="text-secondary hover:text-primary font-medium text-sm group transition duration-200"> Saiba mais <span class="group-hover:ml-1 transition-all duration-200">&rarr;</span></a>
+                    </div>
+                    <!-- Feature Card 3 -->
+                    <div data-aos="fade-up" data-aos-delay="300" class="bg-bg-card p-7 rounded-xl shadow-md hover:shadow-lg text-center transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"> <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /> </svg>
+                        <h3 id="roteiro" class="text-xl font-semibold mb-3 text-primary">Roteiro de Aprendizado</h3>
+                        <p class="text-text-muted mb-5 text-sm leading-relaxed">Guia detalhado com objetivos, conteúdos, fontes, atividades práticas e cronograma sugerido.</p>
+                        <a href="#" class="text-secondary hover:text-primary font-medium text-sm group transition duration-200"> Saiba mais <span class="group-hover:ml-1 transition-all duration-200">&rarr;</span></a>
+                    </div>
+                    <!-- Feature Card 4 -->
+                    <div data-aos="fade-up" data-aos-delay="400" class="bg-bg-card p-7 rounded-xl shadow-md hover:shadow-lg text-center transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-accent/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto mb-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"> <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7l8 5 8-5M12 12l8 5" /> </svg>
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Fontes e Recursos</h3>
+                        <p class="text-text-muted mb-5 text-sm leading-relaxed">Compilação de livros, periódicos, cursos, certificações e recursos online para aprofundamento.</p>
+                        <a href="#" class="text-secondary hover:text-primary font-medium text-sm group transition duration-200"> Saiba mais <span class="group-hover:ml-1 transition-all duration-200">&rarr;</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Por que estudar contabilidade? Section -->
+        <section class="py-20 lg:py-28 bg-bg-card overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center text-center md:text-left">
+                    <div data-aos="fade-right">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-primary">Por que estudar contabilidade?</h2>
+                        <p class="text-text-muted mb-4 leading-relaxed">
+                            A contabilidade é uma área fundamental para o funcionamento de empresas, organizações públicas e até mesmo para a gestão financeira pessoal. Profissionais de contabilidade são altamente valorizados no mercado de trabalho, com diversas possibilidades de atuação.
+                        </p>
+                        <p class="text-text-muted mb-8 leading-relaxed">
+                            No estado do Tocantins, a demanda por contadores qualificados é crescente, especialmente em setores como agronegócio, comércio e serviços públicos. Dominar a contabilidade, com conhecimento específico da legislação local, abre portas para uma carreira promissora na região.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-around items-center sm:items-start text-center sm:text-left mt-8 space-y-6 sm:space-y-0 sm:space-x-4">
+                            <div class="flex flex-col items-center sm:items-start space-x-0 space-y-1 mb-6 sm:mb-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary flex-shrink-0 mx-auto sm:mx-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"> <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /> </svg>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-primary text-center sm:text-left">Amplo</h4>
+                                    <p class="text-text-muted text-sm text-center sm:text-left">Mercado de trabalho</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center sm:items-start space-x-0 space-y-1 mb-6 sm:mb-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary flex-shrink-0 mx-auto sm:mx-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"> <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l7-3 7 3z" /> </svg>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-primary text-center sm:text-left">Diversas</h4>
+                                    <p class="text-text-muted text-sm text-center sm:text-left">Áreas de atuação</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center sm:items-start space-x-0 space-y-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary flex-shrink-0 mx-auto sm:mx-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"> <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /> </svg>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-primary text-center sm:text-left">Essencial</h4>
+                                    <p class="text-text-muted text-sm text-center sm:text-left">Para empresas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Laptop com gráficos de contabilidade" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner Section -->
+        <section class="py-16 lg:py-20 bg-gradient-to-r from-primary to-secondary text-text-inverted">
+            <div class="container mx-auto px-6 text-center">
+                <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold mb-4">Comece sua jornada de aprendizado hoje</h2>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-blue-100">Nosso portal oferece todo o conteúdo necessário para você se tornar um especialista em contabilidade, com foco no Tocantins.</p>
+                 <a href="#" data-aos="zoom-in" data-aos-delay="200" class="inline-block bg-white hover:bg-gray-100 text-secondary hover:text-primary font-bold py-3 px-10 rounded-lg shadow-lg transition duration-300 transform hover:scale-105 cta-pulse">
+                    Iniciar Agora
+                </a>
+            </div>
+        </section>
+
+        <!-- Recursos em Destaque Section -->
+        <section id="bibliografia" class="py-20 lg:py-28 bg-bg-main">
+            <div class="container mx-auto px-6 text-center">
+                <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-center mb-16 text-primary">Recursos em Destaque</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+                    <!-- Resource Card 1 -->
+                    <div data-aos="fade-up" data-aos-delay="100" class="bg-bg-card rounded-xl shadow-md overflow-hidden flex flex-col transition duration-300 hover:shadow-xl transform hover:-translate-y-1">
+                        <img src="https://www.pontotel.com.br/local/wp-content/uploads/2023/11/normas-brasileiras-de-contabilidade.webp" alt="Arquivos e calculadora" class="w-full h-60 object-cover">
+                        <div class="p-7 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold mb-3 text-primary">Legislação Contábil Brasileira</h3>
+                            <p class="text-text-muted mb-5 text-sm flex-grow leading-relaxed">Conheça as principais normas e leis, incluindo NBC, pronunciamentos do CPC e legislação tributária.</p>
+                            <a href="#" class="inline-block mt-auto bg-primary hover:bg-primary-hover text-white font-semibold py-2.5 px-6 rounded-md transition duration-300 text-center self-center transform hover:scale-105 shadow hover:shadow-md text-sm">
+                                Ver Legislação
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Resource Card 2 -->
+                    <div data-aos="fade-up" data-aos-delay="200" class="bg-bg-card rounded-xl shadow-md overflow-hidden flex flex-col transition duration-300 hover:shadow-xl transform hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1638722843763-1cfae2247718?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=70" alt="Calculadora e papéis com gráficos" class="w-full h-60 object-cover">
+                        <div class="p-7 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold mb-3 text-primary">Bibliografia Recomendada</h3>
+                            <p class="text-text-muted mb-5 text-sm flex-grow leading-relaxed">Uma lista completa e comentada de livros, periódicos, sites e legislação essencial para seus estudos.</p>
+                            <a href="#" class="inline-block mt-auto bg-primary hover:bg-primary-hover text-white font-semibold py-2.5 px-6 rounded-md transition duration-300 text-center self-center transform hover:scale-105 shadow hover:shadow-md text-sm">
+                                Ver Bibliografia
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-bg-header-footer text-gray-300 pt-20 pb-10">
+        <div class="container mx-auto px-6 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 text-center md:text-left">
+                <!-- Column 1: Branding -->
+                <div>
+                    <h3 class="text-xl font-bold text-text-inverted mb-3">Contabilidade<span class="text-accent">Total</span></h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Do Básico ao Avançado<br>Especializado para o Tocantins.<br>Seu guia completo para o sucesso.</p>
+                </div>
+
+                <!-- Column 2: Links Rápidos -->
+                <div>
+                    <h4 class="text-lg font-semibold text-text-inverted mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#inicio" class="hover:text-accent transition duration-200 text-sm">Início</a></li>
+                        <li><a href="#legislacao" class="hover:text-accent transition duration-200 text-sm">Legislação</a></li>
+                        <li><a href="#plano-estudos" class="hover:text-accent transition duration-200 text-sm">Plano de Estudos</a></li>
+                        <li><a href="#roteiro" class="hover:text-accent transition duration-200 text-sm">Roteiro de Aprendizado</a></li>
+                        <li><a href="#recursos" class="hover:text-accent transition duration-200 text-sm">Fontes e Recursos</a></li>
+                        <li><a href="#bibliografia" class="hover:text-accent transition duration-200 text-sm">Bibliografia</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Recursos Externos -->
+                <div>
+                    <h4 class="text-lg font-semibold text-text-inverted mb-4">Recursos Externos</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Conselho Federal de Contabilidade</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">CRC Tocantins</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Comitê de Pronunciamentos Contábeis</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Secretaria da Fazenda do Tocantins</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                &copy; <script>document.write(new Date().getFullYear())</script> ContabilidadeTotal. Todos os direitos reservados.<br>
+                <a href="https://www.linkedin.com/in/luispaulogomes" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Desenvolvido por Luis Paulo G. Andrade</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 700, // values from 0 to 3000, with step 50ms
+            once: true, // whether animation should happen only once - while scrolling down
+        });
+    </script>
+
+</body>
+</html>
