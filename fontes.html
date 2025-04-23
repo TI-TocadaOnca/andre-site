@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontes e Recursos - ContabilidadeTotal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        :root {
+            --color-primary: #1E40AF;
+            --color-primary-hover: #1D4ED8;
+            --color-secondary: #3B82F6;
+            --color-accent: #60A5FA;
+            --color-text-base: #1F2937;
+            --color-text-muted: #4B5563;
+            --color-text-inverted: #FFFFFF;
+            --color-bg-main: #F9FAFB;
+            --color-bg-card: #FFFFFF;
+            --color-bg-dark: #111827;
+            --color-bg-header-footer: #1F2937;
+            --color-border-light: #E5E7EB;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-text-base);
+            background-color: var(--color-bg-main);
+        }
+        html { scroll-behavior: smooth; }
+        .cta-pulse:hover { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1.02); } 50% { transform: scale(1.05); } }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        'primary-hover': 'var(--color-primary-hover)',
+                        secondary: 'var(--color-secondary)',
+                        accent: 'var(--color-accent)',
+                        'text-base': 'var(--color-text-base)',
+                        'text-muted': 'var(--color-text-muted)',
+                        'text-inverted': 'var(--color-text-inverted)',
+                        'bg-main': 'var(--color-bg-main)',
+                        'bg-card': 'var(--color-bg-card)',
+                        'bg-dark': 'var(--color-bg-dark)',
+                        'bg-header-footer': 'var(--color-bg-header-footer)',
+                        'border-light': 'var(--color-border-light)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
+    <header x-data="{ mobileMenuOpen: false }" class="bg-bg-header-footer text-text-inverted shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <a href="index.html" class="text-2xl font-bold">Contabilidade<span class="text-accent">Total</span></a>
+                <p class="text-xs text-gray-400">Do Básico ao Avançado - Especializado para o Tocantins</p>
+            </div>
+            <div class="hidden md:flex space-x-7 items-center">
+                <a href="index.html" class="hover:text-accent transition duration-200">Início</a>
+                <a href="legislacao.html" class="hover:text-accent transition duration-200">Legislação</a>
+                <a href="plano-estudos.html" class="hover:text-accent transition duration-200">Plano de Estudos</a>
+                <a href="roteiro.html" class="hover:text-accent transition duration-200">Roteiro de Aprendizado</a>
+                <a href="fontes.html" class="hover:text-accent transition duration-200">Fontes e Recursos</a>
+                <a href="bibliografia.html" class="hover:text-accent transition duration-200">Bibliografia</a>
+            </div>
+            <div class="md:hidden">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path :class="{'hidden': mobileMenuOpen, 'inline-flex': !mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        <path :class="{'hidden': !mobileMenuOpen, 'inline-flex': mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden bg-gray-700" @click.away="mobileMenuOpen = false">
+             <a href="index.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Início</a>
+             <a href="legislacao.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Legislação</a>
+             <a href="plano-estudos.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Plano de Estudos</a>
+             <a href="roteiro.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Roteiro de Aprendizado</a>
+             <a href="fontes.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Fontes e Recursos</a>
+             <a href="bibliografia.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Bibliografia</a>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12 max-w-4xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-10">Fontes Acadêmicas e Profissionais para Estudos em Contabilidade</h1>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Livros de Referência</h2>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Fundamentos e Contabilidade Básica</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li>Contabilidade Básica – Paulo Viceconti e Silvério das Neves</li>
+                        <li>Fundamentos da Contabilidade – Osni Moura Ribeiro</li>
+                        <li>Contabilidade Introdutória – Equipe de Professores da FEA/USP</li>
+                        <li>Contabilidade Geral – José Carlos Marion</li>
+                        <li>Contabilidade Financeira: uma Introdução aos Conceitos – Clóvis Luis Padoveze</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Contabilidade Intermediária e Avançada</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li>Manual de Contabilidade Societária – Eliseu Martins, Sérgio de Iudícibus, Ernesto Gelbcke e Ariovaldo dos Santos</li>
+                        <li>Contabilidade Avançada e Análise das Demonstrações Financeiras – José Hernandez Perez Jr. e Marcelo Oliveira</li>
+                        <li>Análise Avançada das Demonstrações Contábeis: Uma Abordagem Crítica – Eliseu Martins</li>
+                        <li>Contabilidade Geral e Avançada – Silvio Sande e André Neiva</li>
+                        <li>Teoria da Contabilidade – Sérgio de Iudícibus</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Contabilidade Tributária e Fiscal</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li>Manual de Contabilidade Tributária – Paulo Henrique Pêgas</li>
+                        <li>Contabilidade Tributária na Prática – Rodrigo Luz</li>
+                        <li>Manual de Sobrevivência no Mundo Pós-SPED – Roberto Dias Duarte</li>
+                        <li>Planejamento Tributário na Prática – Éderson Garin Porto</li>
+                        <li>Contabilidade Fiscal e Tributária na Prática – Lourivaldo Lopes da Silva</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Contabilidade de Custos e Gerencial</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li>Contabilidade de Custos – Eliseu Martins</li>
+                        <li>Contabilidade de Custos – Clóvis Luis Padoveze</li>
+                        <li>Contabilidade Gerencial – Sérgio de Iudícibus</li>
+                        <li>Controladoria: Teoria e Prática – Sandra Figueiredo e Paulo Caggiano</li>
+                        <li>Orçamento Empresarial: Planejamento e Controle Gerencial – Clóvis Luis Padoveze</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Contabilidade Pública e do Terceiro Setor</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li>Contabilidade Pública: Teoria e Prática – João Angélico</li>
+                        <li>Manual de Contabilidade Pública – Diana Vaz de Lima e Róbison Gonçalves de Castro</li>
+                        <li>Contabilidade Aplicada ao Setor Público – Marcio Alves Amaral Filho</li>
+                        <li>Contabilidade do Terceiro Setor – Jeanne Coutinho e Idalberto Chiavenato</li>
+                        <li>Contabilidade para Entidades sem Fins Lucrativos – Silvio Aparecido Crepaldi</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Auditoria e Perícia</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li>Auditoria: Conceitos e Aplicações – William Attie</li>
+                        <li>Auditoria Contábil: Teoria e Prática – Silvio Aparecido Crepaldi</li>
+                        <li>Perícia Contábil – Antonio Lopes de Sá</li>
+                        <li>Manual de Perícia Contábil – Alberto Neto</li>
+                        <li>Auditoria das Demonstrações Contábeis – José Hernandez Perez Jr.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Contabilidade Internacional e Específica</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li>IFRS no Brasil – Ernst & Young e FIPECAFI</li>
+                        <li>Contabilidade Internacional – Bruno Marra Pereira</li>
+                        <li>Contabilidade do Agronegócio – José Carlos Marion</li>
+                        <li>Contabilidade Ambiental – Maísa de Souza Ribeiro</li>
+                        <li>A Nova Contabilidade Social – Leda Maria Paulani e Márcio Bobik Braga</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Periódicos Científicos e Revistas Acadêmicas</h2>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Periódicos Nacionais</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li><a href="https://www.revistas.usp.br/rcf" class="text-secondary hover:underline" target="_blank">Revista Contabilidade & Finanças (USP)</a></li>
+                        <li><a href="https://cfc.org.br/revista-brasileira-de-contabilidade-rbc/" class="text-secondary hover:underline" target="_blank">Revista Brasileira de Contabilidade (RBC)</a></li>
+                        <li><a href="https://www.repec.org.br/" class="text-secondary hover:underline" target="_blank">Revista de Educação e Pesquisa em Contabilidade (REPeC)</a></li>
+                        <li><a href="https://revistas.ufpr.br/rcc" class="text-secondary hover:underline" target="_blank">Revista Contabilidade & Controladoria (UFPR)</a></li>
+                        <li><a href="https://periodicos.ufsc.br/index.php/contabilidade" class="text-secondary hover:underline" target="_blank">Revista Contemporânea de Contabilidade (UFSC)</a></li>
+                        <li><a href="https://www.revistas.usp.br/rco" class="text-secondary hover:underline" target="_blank">Revista de Contabilidade e Organizações (USP)</a></li>
+                        <li><a href="https://www.revistacgg.org/" class="text-secondary hover:underline" target="_blank">Revista Contabilidade, Gestão e Governança (UnB)</a></li>
+                        <li><a href="https://revistas.pucsp.br/index.php/CAFI" class="text-secondary hover:underline" target="_blank">CAFI - Contabilidade, Atuária, Finanças & Informação (PUC-SP)</a></li>
+                        <li><a href="https://proxy.furb.br/ojs/index.php/universocontabil" class="text-secondary hover:underline" target="_blank">Revista Universo Contábil (FURB)</a></li>
+                        <li><a href="https://periodicos.uem.br/ojs/index.php/Enfoque" class="text-secondary hover:underline" target="_blank">Revista Enfoque: Reflexão Contábil (UEM)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Periódicos Internacionais</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li>The Accounting Review</li>
+                        <li>Journal of Accounting Research</li>
+                        <li>Journal of Accounting and Economics</li>
+                        <li>Contemporary Accounting Research</li>
+                        <li>Accounting, Organizations and Society</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Cursos e Certificações</h2>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Certificações Profissionais</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li><a href="https://cfc.org.br/exame-de-suficiencia-anteriores/" class="text-secondary hover:underline" target="_blank">Exame de Suficiência do CFC</a></li>
+                        <li><a href="https://cfc.org.br/desenvolvimento-profissional-e-institucional/educacao-profissional-continuada/" class="text-secondary hover:underline" target="_blank">Educação Profissional Continuada (EPC)</a></li>
+                        <li>Certificação de Especialista em Contabilidade Pública</li>
+                        <li>Certificação de Especialista em Auditoria e Perícia</li>
+                        <li>Certificação em IFRS pelo ICPC/CFC</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Plataformas de Cursos Online</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li><a href="https://cfc.org.br/cursosepc/" class="text-secondary hover:underline" target="_blank">Conselho Federal de Contabilidade (CFC)</a></li>
+                        <li><a href="https://ec.contabilidadefacilitada.com/" class="text-secondary hover:underline" target="_blank">Contabilidade Facilitada</a></li>
+                        <li><a href="https://cefis.com.br/" class="text-secondary hover:underline" target="_blank">CEFIS</a></li>
+                        <li><a href="https://www.unifenacon.org.br/" class="text-secondary hover:underline" target="_blank">UniFenacon</a></li>
+                        <li><a href="https://www.iob.com.br/" class="text-secondary hover:underline" target="_blank">IOB</a></li>
+                        <li><a href="https://okai.com.br/cursos" class="text-secondary hover:underline" target="_blank">Okai</a></li>
+                        <li><a href="https://www.coursera.org/" class="text-secondary hover:underline" target="_blank">Coursera</a></li>
+                        <li><a href="https://educacao-executiva.fgv.br/" class="text-secondary hover:underline" target="_blank">FGV Online</a></li>
+                        <li><a href="https://www.ead.senac.br/" class="text-secondary hover:underline" target="_blank">Senac EAD</a></li>
+                        <li><a href="https://www.ev.org.br/" class="text-secondary hover:underline" target="_blank">Fundação Bradesco</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Recursos Online e Ferramentas Digitais</h2>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Sites Especializados</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li><a href="https://www.portaldecontabilidade.com.br/" class="text-secondary hover:underline" target="_blank">Portal de Contabilidade</a></li>
+                        <li><a href="https://www.contabeis.com.br/" class="text-secondary hover:underline" target="_blank">Contábeis</a></li>
+                        <li><a href="https://cfc.org.br/" class="text-secondary hover:underline" target="_blank">Conselho Federal de Contabilidade</a></li>
+                        <li><a href="https://crcto.org.br/" class="text-secondary hover:underline" target="_blank">Conselho Regional de Contabilidade do Tocantins</a></li>
+                        <li><a href="https://www.portaltributario.com.br/" class="text-secondary hover:underline" target="_blank">Portal Tributário</a></li>
+                        <li><a href="https://www.iob.com.br/" class="text-secondary hover:underline" target="_blank">IOB Online</a></li>
+                        <li><a href="https://www.fiscosoft.com.br/" class="text-secondary hover:underline" target="_blank">Fiscosoft</a></li>
+                        <li><a href="https://www.guiatrabalhista.com.br/" class="text-secondary hover:underline" target="_blank">Guia Trabalhista</a></li>
+                        <li><a href="https://www.gov.br/receitafederal/" class="text-secondary hover:underline" target="_blank">Receita Federal</a></li>
+                        <li><a href="https://www.to.gov.br/sefaz/" class="text-secondary hover:underline" target="_blank">Secretaria da Fazenda do Tocantins</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Ferramentas e Softwares</h3>
+                    <ul class="list-disc list-inside text-text-muted space-y-1">
+                        <li>Sistemas ERP para Contabilidade (Domínio, Fortes, SCI, Alterdata)</li>
+                        <li>Plataformas de Contabilidade Online (Contabilizei, Facilite, Agilize)</li>
+                        <li>Ferramentas de Gestão Financeira (Conta Azul, Nibo, Omie)</li>
+                        <li>Sistemas de Gestão Fiscal (Sage, Prosoft, Mastermaq)</li>
+                        <li>Plataformas SPED (SpedFiscal, SpedContábil)</li>
+                        <li>Ferramentas de Análise de Dados (Power BI, Tableau, Excel avançado)</li>
+                        <li>Softwares de Auditoria (ACL, IDEA, Caseware)</li>
+                        <li>Aplicativos de Gestão de Documentos (DocuSign, Dropbox, Google Drive)</li>
+                        <li>Ferramentas de Automação Contábil (RPA, Zapier)</li>
+                        <li>Plataformas de Compliance (Compliasset, LegisCompliance)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Órgãos e Instituições de Referência</h2>
+            <ul class="list-disc list-inside text-text-muted space-y-1">
+                <li><a href="https://cfc.org.br/" class="text-secondary hover:underline" target="_blank">Conselho Federal de Contabilidade (CFC)</a></li>
+                <li><a href="https://crcto.org.br/" class="text-secondary hover:underline" target="_blank">Conselho Regional de Contabilidade do Tocantins (CRC-TO)</a></li>
+                <li><a href="https://www.cpc.org.br/" class="text-secondary hover:underline" target="_blank">Comitê de Pronunciamentos Contábeis (CPC)</a></li>
+                <li><a href="https://www.ibracon.com.br/" class="text-secondary hover:underline" target="_blank">Instituto dos Auditores Independentes do Brasil (IBRACON)</a></li>
+                <li><a href="https://www.gov.br/cvm/" class="text-secondary hover:underline" target="_blank">Comissão de Valores Mobiliários (CVM)</a></li>
+                <li><a href="https://www.gov.br/receitafederal/" class="text-secondary hover:underline" target="_blank">Secretaria da Receita Federal do Brasil</a></li>
+                <li><a href="https://www.to.gov.br/sefaz/" class="text-secondary hover:underline" target="_blank">Secretaria da Fazenda do Estado do Tocantins</a></li>
+                <li><a href="https://fipecafi.org/" class="text-secondary hover:underline" target="_blank">Fundação Instituto de Pesquisas Contábeis, Atuariais e Financeiras (FIPECAFI)</a></li>
+                <li><a href="https://www.abracicon.org/" class="text-secondary hover:underline" target="_blank">Academia Brasileira de Ciências Contábeis (ABRACICON)</a></li>
+                <li><a href="https://fenacon.org.br/" class="text-secondary hover:underline" target="_blank">Federação Nacional das Empresas de Serviços Contábeis (FENACON)</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer class="bg-bg-header-footer text-gray-300 pt-20 pb-10">
+        <div class="container mx-auto px-6 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold text-text-inverted mb-3">Contabilidade<span class="text-accent">Total</span></h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Do Básico ao Avançado<br>Especializado para o Tocantins.<br>Seu guia completo para o sucesso.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-text-inverted mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:text-accent transition duration-200 text-sm">Início</a></li>
+                        <li><a href="legislacao.html" class="hover:text-accent transition duration-200 text-sm">Legislação</a></li>
+                        <li><a href="plano-estudos.html" class="hover:text-accent transition duration-200 text-sm">Plano de Estudos</a></li>
+                        <li><a href="roteiro.html" class="hover:text-accent transition duration-200 text-sm">Roteiro de Aprendizado</a></li>
+                        <li><a href="fontes.html" class="hover:text-accent transition duration-200 text-sm">Fontes e Recursos</a></li>
+                        <li><a href="bibliografia.html" class="hover:text-accent transition duration-200 text-sm">Bibliografia</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-text-inverted mb-4">Recursos Externos</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Conselho Federal de Contabilidade</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">CRC Tocantins</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Comitê de Pronunciamentos Contábeis</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Secretaria da Fazenda do Tocantins</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                &copy; <script>document.write(new Date().getFullYear())</script> ContabilidadeTotal. Todos os direitos reservados.<br>
+                <a href="https://www.linkedin.com/in/luispaulogomes" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Desenvolvido por Luis Paulo G. Andrade</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/global.js"></script>
+</body>
+</html>

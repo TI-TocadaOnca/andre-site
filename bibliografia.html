@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliografia Recomendada - ContabilidadeTotal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        :root {
+            --color-primary: #1E40AF;
+            --color-primary-hover: #1D4ED8;
+            --color-secondary: #3B82F6;
+            --color-accent: #60A5FA;
+            --color-text-base: #1F2937;
+            --color-text-muted: #4B5563;
+            --color-text-inverted: #FFFFFF;
+            --color-bg-main: #F9FAFB;
+            --color-bg-card: #FFFFFF;
+            --color-bg-dark: #111827;
+            --color-bg-header-footer: #1F2937;
+            --color-border-light: #E5E7EB;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-text-base);
+            background-color: var(--color-bg-main);
+        }
+        html { scroll-behavior: smooth; }
+        .cta-pulse:hover { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1.02); } 50% { transform: scale(1.05); } }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        'primary-hover': 'var(--color-primary-hover)',
+                        secondary: 'var(--color-secondary)',
+                        accent: 'var(--color-accent)',
+                        'text-base': 'var(--color-text-base)',
+                        'text-muted': 'var(--color-text-muted)',
+                        'text-inverted': 'var(--color-text-inverted)',
+                        'bg-main': 'var(--color-bg-main)',
+                        'bg-card': 'var(--color-bg-card)',
+                        'bg-dark': 'var(--color-bg-dark)',
+                        'bg-header-footer': 'var(--color-bg-header-footer)',
+                        'border-light': 'var(--color-border-light)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
+    <header x-data="{ mobileMenuOpen: false }" class="bg-bg-header-footer text-text-inverted shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <a href="index.html" class="text-2xl font-bold">Contabilidade<span class="text-accent">Total</span></a>
+                <p class="text-xs text-gray-400">Do Básico ao Avançado - Especializado para o Tocantins</p>
+            </div>
+            <div class="hidden md:flex space-x-7 items-center">
+                <a href="index.html" class="hover:text-accent transition duration-200">Início</a>
+                <a href="legislacao.html" class="hover:text-accent transition duration-200">Legislação</a>
+                <a href="plano-estudos.html" class="hover:text-accent transition duration-200">Plano de Estudos</a>
+                <a href="roteiro.html" class="hover:text-accent transition duration-200">Roteiro de Aprendizado</a>
+                <a href="fontes.html" class="hover:text-accent transition duration-200">Fontes e Recursos</a>
+                <a href="bibliografia.html" class="hover:text-accent transition duration-200">Bibliografia</a>
+            </div>
+            <div class="md:hidden">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path :class="{'hidden': mobileMenuOpen, 'inline-flex': !mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        <path :class="{'hidden': !mobileMenuOpen, 'inline-flex': mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden bg-gray-700" @click.away="mobileMenuOpen = false">
+             <a href="index.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Início</a>
+             <a href="legislacao.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Legislação</a>
+             <a href="plano-estudos.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Plano de Estudos</a>
+             <a href="roteiro.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Roteiro de Aprendizado</a>
+             <a href="fontes.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Fontes e Recursos</a>
+             <a href="bibliografia.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Bibliografia</a>
+        </div>
+    </header>
+    <main class="container mx-auto px-6 py-12 max-w-4xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-10">Bibliografia Recomendada para Estudos em Contabilidade</h1>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Fundamentos e Contabilidade Básica</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-4">
+                <li><span class="font-semibold">MARION, José Carlos.</span> Contabilidade Básica. 12ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">RIBEIRO, Osni Moura.</span> Contabilidade Geral Fácil. 9ª ed. São Paulo: Saraiva, 2018.</li>
+                <li><span class="font-semibold">PADOVEZE, Clóvis Luis.</span> Manual de Contabilidade Básica: Contabilidade Introdutória e Intermediária. 10ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">VICECONTI, Paulo; NEVES, Silvério das.</span> Contabilidade Básica. 18ª ed. São Paulo: Saraiva, 2018.</li>
+                <li><span class="font-semibold">IUDÍCIBUS, Sérgio de (Coord.).</span> Contabilidade Introdutória. 12ª ed. São Paulo: Atlas, 2019.</li>
+            </ol>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Contabilidade Intermediária e Avançada</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-4">
+                <li><span class="font-semibold">MARTINS, Eliseu; IUDÍCIBUS, Sérgio de; GELBCKE, Ernesto Rubens; SANTOS, Ariovaldo dos.</span> Manual de Contabilidade Societária: Aplicável a todas as Sociedades de Acordo com as Normas Internacionais e do CPC. 3ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">ALMEIDA, Marcelo Cavalcanti.</span> Contabilidade Avançada: Textos, Exemplos e Exercícios Resolvidos. 4ª ed. São Paulo: Atlas, 2020.</li>
+                <li><span class="font-semibold">PEREZ JUNIOR, José Hernandez; OLIVEIRA, Luís Martins de.</span> Contabilidade Avançada: Texto e Testes com as Respostas. 8ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">IUDÍCIBUS, Sérgio de.</span> Teoria da Contabilidade. 11ª ed. São Paulo: Atlas, 2017.</li>
+                <li><span class="font-semibold">MARTINS, Eliseu; DINIZ, Josedilton Alves; MIRANDA, Gilberto José.</span> Análise Avançada das Demonstrações Contábeis: Uma Abordagem Crítica. 2ª ed. São Paulo: Atlas, 2018.</li>
+            </ol>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Contabilidade Tributária e Fiscal</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-4">
+                <li><span class="font-semibold">PÊGAS, Paulo Henrique.</span> Manual de Contabilidade Tributária. 9ª ed. Rio de Janeiro: Freitas Bastos, 2018.</li>
+                <li><span class="font-semibold">OLIVEIRA, Luís Martins de; CHIEREGATO, Renato; PEREZ JUNIOR, José Hernandez; GOMES, Marliete Bezerra.</span> Manual de Contabilidade Tributária. 14ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">FABRETTI, Láudio Camargo.</span> Contabilidade Tributária. 16ª ed. São Paulo: Atlas, 2017.</li>
+                <li><span class="font-semibold">HIGUCHI, Hiromi.</span> Imposto de Renda das Empresas: Interpretação e Prática. São Paulo: IR Publicações, 2023.</li>
+                <li><span class="font-semibold">RODRIGUES, Aldenir Ortiz; BUSCH, Cleber Marcel; GARCIA, Edino Ribeiro; TODA, William Haruo.</span> IRPJ/CSLL 2023. São Paulo: IOB, 2023.</li>
+            </ol>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Contabilidade de Custos e Gerencial</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-4">
+                <li><span class="font-semibold">MARTINS, Eliseu.</span> Contabilidade de Custos. 11ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">PADOVEZE, Clóvis Luis.</span> Contabilidade de Custos: Teoria, Prática, Integração com Sistemas de Informações (ERP). São Paulo: Cengage Learning, 2018.</li>
+                <li><span class="font-semibold">CREPALDI, Silvio Aparecido; CREPALDI, Guilherme Simões.</span> Contabilidade Gerencial: Teoria e Prática. 8ª ed. São Paulo: Atlas, 2019.</li>
+                <li><span class="font-semibold">ATKINSON, Anthony A.; KAPLAN, Robert S.; MATSUMURA, Ella Mae; YOUNG, S. Mark.</span> Contabilidade Gerencial: Informação para Tomada de Decisão e Execução da Estratégia. 4ª ed. São Paulo: Atlas, 2015.</li>
+                <li><span class="font-semibold">HORNGREN, Charles T.; DATAR, Srikant M.; RAJAN, Madhav V.</span> Contabilidade de Custos: Uma Abordagem Gerencial. 16ª ed. São Paulo: Pearson, 2017.</li>
+            </ol>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Contabilidade Pública e do Terceiro Setor</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-4">
+                <li><span class="font-semibold">LIMA, Diana Vaz de; CASTRO, Róbison Gonçalves de.</span> Contabilidade Pública: Integrando União, Estados e Municípios (Siafi e Siafem). 5ª ed. São Paulo: Atlas, 2020.</li>
+                <li><span class="font-semibold">KOHAMA, Heilio.</span> Contabilidade Pública: Teoria e Prática. 15ª ed. São Paulo: Atlas, 2016.</li>
+                <li><span class="font-semibold">SLOMSKI, Valmor.</span> Manual de Contabilidade Pública: De Acordo com as Normas Internacionais de Contabilidade Aplicadas ao Setor Público. 3ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">ARAÚJO, Osório Cavalcante.</span> Contabilidade para Organizações do Terceiro Setor. 2ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">OLAK, Paulo Arnaldo; NASCIMENTO, Diogo Toledo do.</span> Contabilidade para Entidades sem Fins Lucrativos (Terceiro Setor). 4ª ed. São Paulo: Atlas, 2018.</li>
+            </ol>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Auditoria e Perícia</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-4">
+                <li><span class="font-semibold">ATTIE, William.</span> Auditoria: Conceitos e Aplicações. 7ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">ALMEIDA, Marcelo Cavalcanti.</span> Auditoria: Um Curso Moderno e Completo. 9ª ed. São Paulo: Atlas, 2019.</li>
+                <li><span class="font-semibold">CREPALDI, Silvio Aparecido; CREPALDI, Guilherme Simões.</span> Auditoria Contábil: Teoria e Prática. 11ª ed. São Paulo: Atlas, 2019.</li>
+                <li><span class="font-semibold">SÁ, Antonio Lopes de.</span> Perícia Contábil. 11ª ed. São Paulo: Atlas, 2017.</li>
+                <li><span class="font-semibold">MAGALHÃES, Antonio de Deus Farias; LUNKES, Irtes Cristina.</span> Perícia Contábil nos Processos Cível e Trabalhista. 2ª ed. São Paulo: Atlas, 2018.</li>
+            </ol>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Controladoria e Finanças Corporativas</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-4">
+                <li><span class="font-semibold">PADOVEZE, Clóvis Luis.</span> Controladoria Estratégica e Operacional. 3ª ed. São Paulo: Cengage Learning, 2017.</li>
+                <li><span class="font-semibold">FIGUEIREDO, Sandra; CAGGIANO, Paulo César.</span> Controladoria: Teoria e Prática. 5ª ed. São Paulo: Atlas, 2017.</li>
+                <li><span class="font-semibold">ASSAF NETO, Alexandre.</span> Finanças Corporativas e Valor. 8ª ed. São Paulo: Atlas, 2020.</li>
+                <li><span class="font-semibold">ROSS, Stephen A.; WESTERFIELD, Randolph W.; JAFFE, Jeffrey F.; LAMB, Roberto.</span> Administração Financeira. 10ª ed. Porto Alegre: AMGH, 2015.</li>
+                <li><span class="font-semibold">BREALEY, Richard A.; MYERS, Stewart C.; ALLEN, Franklin.</span> Princípios de Finanças Corporativas. 12ª ed. Porto Alegre: AMGH, 2018.</li>
+            </ol>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Contabilidade Internacional e IFRS</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-4">
+                <li><span class="font-semibold">ERNST & YOUNG; FIPECAFI.</span> Manual de Normas Internacionais de Contabilidade: IFRS versus Normas Brasileiras. 3ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">ALMEIDA, Marcelo Cavalcanti.</span> Contabilidade Societária: IFRS e CPC. 3ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">IUDÍCIBUS, Sérgio de; MARTINS, Eliseu; GELBCKE, Ernesto Rubens; SANTOS, Ariovaldo dos.</span> IFRS - Manual de Contabilidade Societária: Aplicável a Todas as Sociedades. 3ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">PADOVEZE, Clóvis Luis; BENEDICTO, Gideon Carvalho de; LEITE, Joubert da Silva Jerônimo.</span> Manual de Contabilidade Internacional: IFRS - US GAAP - BR GAAP: Teoria e Prática. São Paulo: Cengage Learning, 2017.</li>
+                <li><span class="font-semibold">PEREIRA, Bruno Marra.</span> Contabilidade Internacional. São Paulo: Atlas, 2018.</li>
+            </ol>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Contabilidade Digital e Tecnologias</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-4">
+                <li><span class="font-semibold">DUARTE, Roberto Dias.</span> Manual de Sobrevivência no Mundo Pós-SPED. 2ª ed. Belo Horizonte: CONFEB, 2018.</li>
+                <li><span class="font-semibold">OLIVEIRA, Edson.</span> Contabilidade Digital. São Paulo: Atlas, 2019.</li>
+                <li><span class="font-semibold">FRANCO, Hilário; MARRA, Ernesto.</span> Auditoria Digital. 5ª ed. São Paulo: Atlas, 2017.</li>
+                <li><span class="font-semibold">SILVA, Edson Cordeiro da.</span> Governança Corporativa nas Empresas: Guia Prático de Orientação para Acionistas, Investidores, Conselheiros de Administração e Fiscal, Auditores, Executivos, Gestores, Analistas de Mercado e Pesquisadores. 4ª ed. São Paulo: Atlas, 2016.</li>
+                <li><span class="font-semibold">FERRARI, Ed.</span> Análise de Balanços: Análise Financeira das Demonstrações Financeiras, Tradicional e Avançada para Usuários Internos e Externos. 5ª ed. Rio de Janeiro: Elsevier, 2018.</li>
+            </ol>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Contabilidade Especializada</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-4">
+                <li><span class="font-semibold">MARION, José Carlos.</span> Contabilidade Rural: Contabilidade Agrícola, Contabilidade da Pecuária, Imposto de Renda Pessoa Jurídica. 14ª ed. São Paulo: Atlas, 2018.</li>
+                <li><span class="font-semibold">RIBEIRO, Maísa de Souza.</span> Contabilidade Ambiental. 2ª ed. São Paulo: Saraiva, 2018.</li>
+                <li><span class="font-semibold">ALMEIDA, José Elias Feres de.</span> Contabilidade das Pequenas e Médias Empresas. Rio de Janeiro: Elsevier, 2017.</li>
+                <li><span class="font-semibold">IUDÍCIBUS, Sérgio de; MARION, José Carlos; FARIA, Ana Cristina de.</span> Introdução à Teoria da Contabilidade: Para Graduação. 6ª ed. São Paulo: Atlas, 2017.</li>
+                <li><span class="font-semibold">PAULANI, Leda Maria; BRAGA, Márcio Bobik.</span> A Nova Contabilidade Social. 4ª ed. São Paulo: Saraiva, 2017.</li>
+            </ol>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Periódicos e Revistas Acadêmicas</h2>
+            <ul class="list-disc list-inside text-text-muted space-y-2">
+                <li><a href="https://www.revistas.usp.br/rcf" class="text-secondary hover:underline" target="_blank">Revista Contabilidade & Finanças (USP)</a></li>
+                <li><a href="https://cfc.org.br/revista-brasileira-de-contabilidade-rbc/" class="text-secondary hover:underline" target="_blank">Revista Brasileira de Contabilidade (RBC)</a></li>
+                <li><a href="https://www.repec.org.br/" class="text-secondary hover:underline" target="_blank">Revista de Educação e Pesquisa em Contabilidade (REPeC)</a></li>
+                <li><a href="https://revistas.ufpr.br/rcc" class="text-secondary hover:underline" target="_blank">Revista Contabilidade & Controladoria (UFPR)</a></li>
+                <li><a href="https://periodicos.ufsc.br/index.php/contabilidade" class="text-secondary hover:underline" target="_blank">Revista Contemporânea de Contabilidade (UFSC)</a></li>
+            </ul>
+        </section>
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Sites e Recursos Online</h2>
+            <ul class="list-disc list-inside text-text-muted space-y-2">
+                <li><a href="https://cfc.org.br/" class="text-secondary hover:underline" target="_blank">Conselho Federal de Contabilidade (CFC)</a></li>
+                <li><a href="https://crcto.org.br/" class="text-secondary hover:underline" target="_blank">Conselho Regional de Contabilidade do Tocantins (CRC-TO)</a></li>
+                <li><a href="https://www.cpc.org.br/" class="text-secondary hover:underline" target="_blank">Comitê de Pronunciamentos Contábeis (CPC)</a></li>
+                <li><a href="https://www.portaldecontabilidade.com.br/" class="text-secondary hover:underline" target="_blank">Portal de Contabilidade</a></li>
+                <li><a href="https://www.contabeis.com.br/" class="text-secondary hover:underline" target="_blank">Contábeis</a></li>
+                <li><a href="https://www.portaltributario.com.br/" class="text-secondary hover:underline" target="_blank">Portal Tributário</a></li>
+                <li><a href="https://www.to.gov.br/sefaz/" class="text-secondary hover:underline" target="_blank">Secretaria da Fazenda do Tocantins</a></li>
+                <li><a href="https://www.iob.com.br/" class="text-secondary hover:underline" target="_blank">IOB Online</a></li>
+                <li><a href="https://www.fiscosoft.com.br/" class="text-secondary hover:underline" target="_blank">Fiscosoft</a></li>
+                <li><a href="https://www.abracicon.org/" class="text-secondary hover:underline" target="_blank">Academia Brasileira de Ciências Contábeis (ABRACICON)</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Legislação Fundamental</h2>
+            <ol class="list-decimal list-inside text-text-muted space-y-2">
+                <li>Decreto-Lei nº 9.295/1946</li>
+                <li>Lei nº 6.404/1976 (Lei das Sociedades por Ações)</li>
+                <li>Lei nº 11.638/2007</li>
+                <li>Lei nº 11.941/2009</li>
+                <li>Lei nº 12.973/2014</li>
+                <li>Lei nº 4.320/1964</li>
+                <li>Lei Complementar nº 101/2000 (Lei de Responsabilidade Fiscal)</li>
+                <li>Lei Complementar nº 123/2006 (Estatuto da Microempresa e Empresa de Pequeno Porte)</li>
+                <li>Resolução CFC nº 1.328/2011</li>
+                <li>Resolução CFC nº 1.055/2005</li>
+            </ol>
+        </section>
+    </main>
+    <footer class="bg-bg-header-footer text-gray-300 pt-20 pb-10">
+        <div class="container mx-auto px-6 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold text-text-inverted mb-3">Contabilidade<span class="text-accent">Total</span></h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Do Básico ao Avançado<br>Especializado para o Tocantins.<br>Seu guia completo para o sucesso.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-text-inverted mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:text-accent transition duration-200 text-sm">Início</a></li>
+                        <li><a href="legislacao.html" class="hover:text-accent transition duration-200 text-sm">Legislação</a></li>
+                        <li><a href="plano-estudos.html" class="hover:text-accent transition duration-200 text-sm">Plano de Estudos</a></li>
+                        <li><a href="roteiro.html" class="hover:text-accent transition duration-200 text-sm">Roteiro de Aprendizado</a></li>
+                        <li><a href="fontes.html" class="hover:text-accent transition duration-200 text-sm">Fontes e Recursos</a></li>
+                        <li><a href="bibliografia.html" class="hover:text-accent transition duration-200 text-sm">Bibliografia</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-text-inverted mb-4">Recursos Externos</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Conselho Federal de Contabilidade</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">CRC Tocantins</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Comitê de Pronunciamentos Contábeis</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Secretaria da Fazenda do Tocantins</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                &copy; <script>document.write(new Date().getFullYear())</script> ContabilidadeTotal. Todos os direitos reservados.<br>
+                <a href="https://www.linkedin.com/in/luispaulogomes" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Desenvolvido por Luis Paulo G. Andrade</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/global.js"></script>
+</body>
+</html>

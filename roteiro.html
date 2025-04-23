@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roteiro de Aprendizado em Contabilidade | ContabilidadeTotal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        :root {
+            --color-primary: #1E40AF;
+            --color-primary-hover: #1D4ED8;
+            --color-secondary: #3B82F6;
+            --color-accent: #60A5FA;
+            --color-text-base: #1F2937;
+            --color-text-muted: #4B5563;
+            --color-text-inverted: #FFFFFF;
+            --color-bg-main: #F9FAFB;
+            --color-bg-card: #FFFFFF;
+            --color-bg-dark: #111827;
+            --color-bg-header-footer: #1F2937;
+            --color-border-light: #E5E7EB;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-text-base);
+            background-color: var(--color-bg-main);
+        }
+        html { scroll-behavior: smooth; }
+        .cta-pulse:hover { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1.02); } 50% { transform: scale(1.05); } }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        'primary-hover': 'var(--color-primary-hover)',
+                        secondary: 'var(--color-secondary)',
+                        accent: 'var(--color-accent)',
+                        'text-base': 'var(--color-text-base)',
+                        'text-muted': 'var(--color-text-muted)',
+                        'text-inverted': 'var(--color-text-inverted)',
+                        'bg-main': 'var(--color-bg-main)',
+                        'bg-card': 'var(--color-bg-card)',
+                        'bg-dark': 'var(--color-bg-dark)',
+                        'bg-header-footer': 'var(--color-bg-header-footer)',
+                        'border-light': 'var(--color-border-light)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
+    <header x-data="{ mobileMenuOpen: false }" class="bg-bg-header-footer text-text-inverted shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <a href="index.html" class="text-2xl font-bold">Contabilidade<span class="text-accent">Total</span></a>
+                <p class="text-xs text-gray-400">Do Básico ao Avançado - Especializado para o Tocantins</p>
+            </div>
+            <div class="hidden md:flex space-x-7 items-center">
+                <a href="index.html" class="hover:text-accent transition duration-200">Início</a>
+                <a href="legislacao.html" class="hover:text-accent transition duration-200">Legislação</a>
+                <a href="plano-estudos.html" class="hover:text-accent transition duration-200">Plano de Estudos</a>
+                <a href="roteiro.html" class="hover:text-accent transition duration-200">Roteiro de Aprendizado</a>
+                <a href="fontes.html" class="hover:text-accent transition duration-200">Fontes e Recursos</a>
+                <a href="bibliografia.html" class="hover:text-accent transition duration-200">Bibliografia</a>
+            </div>
+            <div class="md:hidden">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path :class="{'hidden': mobileMenuOpen, 'inline-flex': !mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        <path :class="{'hidden': !mobileMenuOpen, 'inline-flex': mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden bg-gray-700" @click.away="mobileMenuOpen = false">
+             <a href="index.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Início</a>
+             <a href="legislacao.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Legislação</a>
+             <a href="plano-estudos.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Plano de Estudos</a>
+             <a href="roteiro.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Roteiro de Aprendizado</a>
+             <a href="fontes.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Fontes e Recursos</a>
+             <a href="bibliografia.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Bibliografia</a>
+        </div>
+    </header>
+    <main class="w-full max-w-3xl px-4 py-10 mx-auto">
+      <h1 class="text-3xl font-bold text-primary mb-8">Roteiro de Aprendizado em Contabilidade: Do Básico ao Avançado</h1>
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-secondary mb-4">Introdução</h2>
+        <p class="mb-6">Este roteiro de aprendizado foi desenvolvido para proporcionar uma formação completa em contabilidade, desde os fundamentos básicos até o nível avançado, considerando tanto a legislação nacional quanto as especificidades do estado do Tocantins. O documento está estruturado de forma sequencial, permitindo que o estudante progrida gradualmente, adquirindo conhecimentos sólidos em cada etapa antes de avançar para a próxima.</p>
+        <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7 mb-8">
+          <h3 class="text-xl font-semibold text-primary mb-2">Objetivos do Roteiro</h3>
+          <ul class="list-disc list-inside space-y-1 text-text-muted">
+            <li>Proporcionar uma formação completa em contabilidade, desde o nível básico até o avançado</li>
+            <li>Considerar as particularidades da legislação contábil brasileira e do estado do Tocantins</li>
+            <li>Oferecer um caminho estruturado de aprendizado com marcos claros de progressão</li>
+            <li>Indicar as melhores fontes de estudo para cada etapa do aprendizado</li>
+            <li>Preparar o estudante para atuar profissionalmente no mercado contábil brasileiro, com ênfase no Tocantins</li>
+          </ul>
+        </div>
+        <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7 mb-8">
+          <h3 class="text-xl font-semibold text-primary mb-2">Estrutura do Roteiro</h3>
+          <p class="mb-2">O roteiro está dividido em quatro níveis principais:</p>
+          <ol class="list-decimal list-inside space-y-1 text-text-muted mb-2">
+            <li><span class="font-semibold text-text-base">Nível Básico</span>: Fundamentos da contabilidade e conhecimentos essenciais</li>
+            <li><span class="font-semibold text-text-base">Nível Intermediário</span>: Aprofundamento em áreas específicas da contabilidade</li>
+            <li><span class="font-semibold text-text-base">Nível Avançado</span>: Tópicos complexos e especializações</li>
+            <li><span class="font-semibold text-text-base">Educação Continuada</span>: Atualização constante e desenvolvimento profissional</li>
+          </ol>
+          <p class="mb-0">Cada nível contém módulos específicos com objetivos de aprendizado, conteúdos recomendados, fontes de estudo e atividades práticas sugeridas.</p>
+        </div>
+        <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7">
+          <h3 class="text-xl font-semibold text-primary mb-2">Cronograma Sugerido</h3>
+          <ul class="list-disc list-inside space-y-1 text-text-muted">
+            <li><span class="font-semibold text-text-base">Nível Básico</span>: 6 a 12 meses</li>
+            <li><span class="font-semibold text-text-base">Nível Intermediário</span>: 12 a 18 meses</li>
+            <li><span class="font-semibold text-text-base">Nível Avançado</span>: 18 a 24 meses</li>
+            <li><span class="font-semibold text-text-base">Educação Continuada</span>: Permanente</li>
+          </ul>
+        </div>
+      </section>
+      <div class="space-y-10">
+        <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7">
+          <h2 class="text-2xl font-semibold text-secondary mb-4">NÍVEL BÁSICO</h2>
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 1: Fundamentos da Contabilidade (2-3 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Compreender os conceitos básicos e a evolução da contabilidade</li>
+                <li>Entender a estrutura patrimonial e o método das partidas dobradas</li>
+                <li>Dominar a escrituração contábil básica</li>
+                <li>Elaborar balancetes e demonstrações contábeis simples</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>História e evolução da contabilidade</li>
+                <li>Objetivos e usuários da informação contábil</li>
+                <li>Princípios Fundamentais de Contabilidade</li>
+                <li>Patrimônio: conceito, componentes e aspectos qualitativos e quantitativos</li>
+                <li>Equação fundamental do patrimônio</li>
+                <li>Método das partidas dobradas</li>
+                <li>Contas contábeis: teoria, estrutura e plano de contas</li>
+                <li>Lançamentos contábeis e livros contábeis</li>
+                <li>Balancete de verificação</li>
+                <li>Apuração do resultado do exercício (simplificada)</li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Contabilidade Básica (Paulo Viceconti e Silvério das Neves), Contabilidade Introdutória (FEA/USP), Contabilidade Geral (José Carlos Marion)</li>
+                <li><span class="font-semibold">Cursos Online:</span> Fundação Bradesco, Contabilidade Facilitada, CFC</li>
+                <li><span class="font-semibold">Recursos Complementares:</span> Portal de Contabilidade, YouTube, Exercícios práticos</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Elaborar um plano de contas simples</li>
+                <li>Realizar exercícios de lançamentos contábeis</li>
+                <li>Montar balancetes de verificação</li>
+                <li>Elaborar demonstrações contábeis básicas</li>
+                <li>Resolver estudos de caso simples</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 2: Legislação Profissional e Ética (1-2 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Conhecer a regulamentação da profissão contábil no Brasil</li>
+                <li>Compreender o Código de Ética Profissional do Contador</li>
+                <li>Entender a estrutura e o funcionamento dos Conselhos de Contabilidade</li>
+                <li>Identificar as prerrogativas e responsabilidades do profissional contábil</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Decreto-Lei 9.295/1946 (regulamentação da profissão contábil)</li>
+                <li>Código de Ética Profissional do Contador</li>
+                <li>Prerrogativas profissionais</li>
+                <li>Conselho Federal de Contabilidade (CFC) e Conselhos Regionais</li>
+                <li>Registro profissional e educação continuada</li>
+                <li>Particularidades do CRC-TO</li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Legislação:</span> Decreto-Lei 9.295/1946, Resolução CFC nº 803/1996, Normas Brasileiras de Contabilidade Profissionais</li>
+                <li><span class="font-semibold">Sites Oficiais:</span> CFC, CRC-TO</li>
+                <li><span class="font-semibold">Livros e Materiais:</span> Ética Geral e Profissional em Contabilidade (Lázaro Plácido Lisboa), Cartilhas e manuais do CFC</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Analisar casos de infrações éticas julgados pelo CFC</li>
+                <li>Participar de palestras e eventos sobre ética profissional</li>
+                <li>Visitar o CRC-TO para conhecer sua estrutura e funcionamento</li>
+                <li>Elaborar um resumo das principais normas éticas aplicáveis ao contador</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 3: Matemática Financeira Aplicada à Contabilidade (1-2 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Dominar os conceitos de juros simples e compostos</li>
+                <li>Compreender os diferentes tipos de descontos</li>
+                <li>Calcular séries de pagamentos e sistemas de amortização</li>
+                <li>Utilizar planilhas eletrônicas para cálculos financeiros</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Juros simples e compostos</li>
+                <li>Descontos simples e compostos</li>
+                <li>Séries de pagamentos (uniformes e variáveis)</li>
+                <li>Sistemas de amortização (SAC, PRICE, SAM)</li>
+                <li>Cálculo financeiro em planilhas eletrônicas</li>
+                <li>Aplicações práticas na contabilidade</li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Matemática Financeira (José Dutra Vieira Sobrinho), Matemática Financeira Aplicada (Alexandre Assaf Neto), Matemática Financeira com HP 12C e Excel (José Roberto Securato)</li>
+                <li><span class="font-semibold">Cursos Online:</span> FGV Online, Fundação Bradesco, Coursera</li>
+                <li><span class="font-semibold">Recursos Complementares:</span> Planilhas eletrônicas, aplicativos de calculadora financeira, vídeos tutoriais</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Resolver problemas práticos de juros e descontos</li>
+                <li>Elaborar planilhas de amortização de empréstimos</li>
+                <li>Calcular valor presente e futuro de fluxos de caixa</li>
+                <li>Aplicar os conceitos em casos reais de decisões financeiras</li>
+                <li>Desenvolver um projeto de análise de investimento simples</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 4: Noções de Direito e Legislação Aplicada (2-3 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Adquirir conhecimentos básicos de direito comercial e societário</li>
+                <li>Compreender os diferentes tipos de sociedades empresariais</li>
+                <li>Entender os fundamentos do direito tributário</li>
+                <li>Conhecer as principais obrigações fiscais</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Noções de Direito Comercial e Societário</li>
+                <li>Tipos de sociedades empresariais</li>
+                <li>Noções de Direito Tributário</li>
+                <li>Introdução ao Sistema Tributário Nacional</li>
+                <li>Obrigações fiscais principais e acessórias</li>
+                <li>Particularidades da legislação do Tocantins</li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Manual de Direito Comercial (Fábio Ulhoa Coelho), Curso de Direito Tributário (Hugo de Brito Machado), Direito Empresarial Brasileiro (Gladston Mamede)</li>
+                <li><span class="font-semibold">Legislação:</span> Código Civil, Código Tributário Nacional, Legislação tributária do Tocantins</li>
+                <li><span class="font-semibold">Sites e Recursos:</span> Portal Tributário, Secretaria da Fazenda do Tocantins, Receita Federal</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Analisar contratos sociais de diferentes tipos de sociedades</li>
+                <li>Identificar as principais obrigações fiscais de uma empresa</li>
+                <li>Elaborar um calendário fiscal para uma empresa fictícia</li>
+                <li>Pesquisar sobre incentivos fiscais disponíveis no Tocantins</li>
+                <li>Visitar a Secretaria da Fazenda do Tocantins</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7">
+          <h2 class="text-2xl font-semibold text-secondary mb-4">NÍVEL INTERMEDIÁRIO</h2>
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 5: Contabilidade Societária (3-4 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Compreender a Lei das Sociedades por Ações e suas atualizações</li>
+                <li>Dominar a elaboração das demonstrações contábeis obrigatórias</li>
+                <li>Aplicar os critérios de avaliação de ativos e passivos</li>
+                <li>Entender a estrutura e movimentação do Patrimônio Líquido</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Lei das Sociedades por Ações (Lei 6.404/76 e atualizações)</li>
+                <li>Demonstrações financeiras obrigatórias</li>
+                <li>Critérios de avaliação de ativos e passivos</li>
+                <li>Patrimônio Líquido: composição e movimentação</li>
+                <li>Pronunciamentos Contábeis Básicos:
+                  <ul class="list-disc ml-6">
+                    <li>Estrutura Conceitual (CPC 00)</li>
+                    <li>Apresentação das Demonstrações Contábeis (CPC 26)</li>
+                    <li>Políticas Contábeis, Mudança de Estimativa e Retificação de Erro (CPC 23)</li>
+                    <li>Estoques (CPC 16)</li>
+                  </ul>
+                </li>
+                <li>Demonstrações Contábeis Completas:
+                  <ul class="list-disc ml-6">
+                    <li>Demonstração dos Fluxos de Caixa (DFC)</li>
+                    <li>Demonstração do Valor Adicionado (DVA)</li>
+                    <li>Demonstração das Mutações do Patrimônio Líquido (DMPL)</li>
+                    <li>Demonstração do Resultado Abrangente (DRA)</li>
+                  </ul>
+                </li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Manual de Contabilidade Societária (Eliseu Martins, Sérgio de Iudícibus, Ernesto Gelbcke e Ariovaldo dos Santos), Contabilidade Avançada e Análise das Demonstrações Financeiras (José Hernandez Perez Jr. e Marcelo Oliveira), Demonstrações Financeiras: Aspectos Práticos (Adriano Rodrigues)</li>
+                <li><span class="font-semibold">Pronunciamentos Técnicos:</span> Pronunciamentos do CPC, Interpretações Técnicas, Orientações do CPC</li>
+                <li><span class="font-semibold">Cursos e Recursos:</span> CEFIS, IOB, Contabilidade Facilitada</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Elaborar demonstrações contábeis completas para uma empresa fictícia</li>
+                <li>Analisar demonstrações contábeis de empresas reais</li>
+                <li>Resolver casos práticos de avaliação de ativos e passivos</li>
+                <li>Participar de grupos de estudo sobre CPCs</li>
+                <li>Desenvolver um projeto de implementação de um CPC específico</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 6: Contabilidade Fiscal e Tributária (3-4 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Dominar a apuração dos principais tributos federais, estaduais e municipais</li>
+                <li>Compreender os diferentes regimes tributários</li>
+                <li>Aplicar técnicas de planejamento tributário</li>
+                <li>Conhecer as particularidades tributárias do estado do Tocantins</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Tributos Federais:
+                  <ul class="list-disc ml-6">
+                    <li>Imposto de Renda Pessoa Jurídica (IRPJ)</li>
+                    <li>Contribuição Social sobre o Lucro Líquido (CSLL)</li>
+                    <li>PIS e COFINS (regimes cumulativo e não-cumulativo)</li>
+                    <li>Simples Nacional</li>
+                  </ul>
+                </li>
+                <li>Tributos Estaduais e Municipais:
+                  <ul class="list-disc ml-6">
+                    <li>ICMS (com ênfase na legislação do Tocantins)</li>
+                    <li>ISS</li>
+                  </ul>
+                </li>
+                <li>Planejamento Tributário:
+                  <ul class="list-disc ml-6">
+                    <li>Elisão fiscal</li>
+                    <li>Regimes tributários: Lucro Real, Lucro Presumido e Simples Nacional</li>
+                    <li>Incentivos fiscais (com foco nos disponíveis no Tocantins)</li>
+                  </ul>
+                </li>
+                <li>Obrigações acessórias:
+                  <ul class="list-disc ml-6">
+                    <li>SPED (ECD, ECF, EFD)</li>
+                    <li>DCTF, DIRF, DEFIS</li>
+                    <li>Obrigações estaduais específicas do Tocantins</li>
+                  </ul>
+                </li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Manual de Contabilidade Tributária (Paulo Henrique Pêgas), Contabilidade Tributária na Prática (Rodrigo Luz), Planejamento Tributário na Prática (Éderson Garin Porto)</li>
+                <li><span class="font-semibold">Legislação:</span> Regulamento do Imposto de Renda, Lei Complementar 123/2006, Legislação do ICMS do Tocantins, Decretos e Instruções Normativas estaduais</li>
+                <li><span class="font-semibold">Sites e Recursos:</span> Portal Tributário, Secretaria da Fazenda do Tocantins, Receita Federal, Fiscosoft</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Calcular tributos nos diferentes regimes tributários</li>
+                <li>Elaborar um planejamento tributário para uma empresa fictícia</li>
+                <li>Preencher declarações e obrigações acessórias</li>
+                <li>Pesquisar e aplicar incentivos fiscais disponíveis no Tocantins</li>
+                <li>Desenvolver um estudo comparativo entre os regimes tributários</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 7: Contabilidade de Custos (2-3 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Compreender os conceitos e classificações de custos</li>
+                <li>Dominar os diferentes sistemas de custeio</li>
+                <li>Aplicar a análise custo-volume-lucro</li>
+                <li>Utilizar a contabilidade de custos para tomada de decisões</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Terminologia e classificação dos custos</li>
+                <li>Sistemas de custeio:
+                  <ul class="list-disc ml-6">
+                    <li>Por absorção</li>
+                    <li>Variável</li>
+                    <li>ABC (Baseado em Atividades)</li>
+                  </ul>
+                </li>
+                <li>Análise custo-volume-lucro</li>
+                <li>Formação de preço de venda</li>
+                <li>Departamentalização</li>
+                <li>Aplicações setoriais (indústria, comércio, serviços, agronegócio)</li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Contabilidade de Custos (Eliseu Martins), Contabilidade de Custos (Clóvis Luis Padoveze), Gestão Estratégica de Custos (Masayuki Nakagawa)</li>
+                <li><span class="font-semibold">Cursos Online:</span> CEFIS, IOB, Contabilidade Facilitada</li>
+                <li><span class="font-semibold">Recursos Complementares:</span> Planilhas de cálculo de custos, Softwares de gestão de custos, Estudos de caso setoriais</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Implementar diferentes sistemas de custeio em casos práticos</li>
+                <li>Calcular pontos de equilíbrio e margens de contribuição</li>
+                <li>Elaborar relatórios gerenciais de custos</li>
+                <li>Desenvolver um projeto de formação de preços</li>
+                <li>Analisar a estrutura de custos de empresas reais</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 8: Análise das Demonstrações Contábeis (2-3 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Aplicar técnicas de análise horizontal e vertical</li>
+                <li>Calcular e interpretar indicadores econômico-financeiros</li>
+                <li>Analisar o capital de giro e a situação financeira</li>
+                <li>Elaborar relatórios de análise para tomada de decisões</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Análise horizontal e vertical</li>
+                <li>Indicadores econômico-financeiros:
+                  <ul class="list-disc ml-6">
+                    <li>Liquidez</li>
+                    <li>Endividamento</li>
+                    <li>Rentabilidade</li>
+                    <li>Atividade</li>
+                  </ul>
+                </li>
+                <li>Análise do capital de giro</li>
+                <li>Alavancagem financeira e operacional</li>
+                <li>Análise avançada e modelos preditivos</li>
+                <li>Elaboração de relatórios de análise</li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Análise de Balanços (Assaf Neto), Análise Avançada das Demonstrações Contábeis (Eliseu Martins), Análise Financeira de Balanços (José Pereira da Silva)</li>
+                <li><span class="font-semibold">Cursos e Recursos:</span> FGV, CEFIS, Planilhas e modelos de análise financeira</li>
+                <li><span class="font-semibold">Periódicos e Artigos:</span> Revista Contabilidade & Finanças (USP), Revista Brasileira de Contabilidade (RBC), Estudos de caso</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Analisar demonstrações contábeis de empresas reais</li>
+                <li>Elaborar relatórios completos de análise financeira</li>
+                <li>Comparar indicadores de empresas do mesmo setor</li>
+                <li>Desenvolver modelos de análise em planilhas eletrônicas</li>
+                <li>Apresentar recomendações baseadas em análises realizadas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7">
+          <h2 class="text-2xl font-semibold text-secondary mb-4">NÍVEL AVANÇADO</h2>
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 9: Contabilidade Avançada (3-4 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Compreender operações societárias complexas</li>
+                <li>Dominar a consolidação das demonstrações contábeis</li>
+                <li>Aplicar o método da equivalência patrimonial</li>
+                <li>Entender tópicos contábeis avançados e específicos</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Combinação de Negócios:
+                  <ul class="list-disc ml-6">
+                    <li>Fusões, cisões e incorporações</li>
+                    <li>Avaliação de investimentos societários</li>
+                    <li>Consolidação das demonstrações contábeis</li>
+                    <li>Equivalência patrimonial</li>
+                  </ul>
+                </li>
+                <li>Tópicos Especiais:
+                  <ul class="list-disc ml-6">
+                    <li>Redução ao valor recuperável de ativos (Impairment)</li>
+                    <li>Ajuste a valor presente</li>
+                    <li>Propriedade para investimento</li>
+                    <li>Ativos biológicos e produtos agrícolas (relevante para o agronegócio no Tocantins)</li>
+                    <li>Instrumentos financeiros</li>
+                  </ul>
+                </li>
+                <li>Contabilidade Internacional:
+                  <ul class="list-disc ml-6">
+                    <li>Normas Internacionais de Contabilidade (IFRS)</li>
+                    <li>Convergência das normas brasileiras às internacionais</li>
+                    <li>CPC e IASB: estrutura e funcionamento</li>
+                  </ul>
+                </li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Contabilidade Avançada e Análise das Demonstrações Financeiras (José Hernandez Perez Jr. e Marcelo Oliveira), Manual de Contabilidade Societária (Eliseu Martins et al.), IFRS no Brasil (Ernst & Young e FIPECAFI)</li>
+                <li><span class="font-semibold">Pronunciamentos Técnicos:</span> CPCs relacionados a tópicos avançados, Normas Internacionais (IFRS), Interpretações e Orientações Técnicas</li>
+                <li><span class="font-semibold">Cursos Especializados:</span> FIPECAFI, IOB, Cursos sobre consolidação e combinação de negócios</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Elaborar demonstrações consolidadas</li>
+                <li>Simular operações de fusão, cisão e incorporação</li>
+                <li>Aplicar o teste de impairment em casos práticos</li>
+                <li>Desenvolver projetos de implementação de CPCs específicos</li>
+                <li>Analisar casos reais de empresas que adotam IFRS</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 10: Contabilidade Governamental e do Terceiro Setor (2-3 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Compreender as particularidades da contabilidade pública</li>
+                <li>Dominar as normas aplicáveis ao setor público</li>
+                <li>Entender a contabilidade das entidades sem fins lucrativos</li>
+                <li>Conhecer as especificidades da contabilidade pública no Tocantins</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Contabilidade Pública:
+                  <ul class="list-disc ml-6">
+                    <li>MCASP (Manual de Contabilidade Aplicada ao Setor Público)</li>
+                    <li>Lei 4.320/64 e Lei de Responsabilidade Fiscal</li>
+                    <li>Orçamento público</li>
+                    <li>Demonstrações contábeis aplicadas ao setor público</li>
+                    <li>Particularidades da contabilidade pública no estado do Tocantins</li>
+                  </ul>
+                </li>
+                <li>Contabilidade do Terceiro Setor:
+                  <ul class="list-disc ml-6">
+                    <li>Aspectos legais das entidades sem fins lucrativos</li>
+                    <li>Imunidades e isenções tributárias</li>
+                    <li>Prestação de contas e transparência</li>
+                    <li>Demonstrações contábeis para o terceiro setor</li>
+                  </ul>
+                </li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Contabilidade Pública: Teoria e Prática (João Angélico), Manual de Contabilidade Pública (Diana Vaz de Lima e Róbison Gonçalves de Castro), Contabilidade do Terceiro Setor (Jeanne Coutinho e Idalberto Chiavenato)</li>
+                <li><span class="font-semibold">Legislação e Normas:</span> Lei 4.320/1964, Lei Complementar 101/2000, NBC TSP, Legislação do Tocantins</li>
+                <li><span class="font-semibold">Sites e Recursos:</span> Secretaria do Tesouro Nacional, Tribunal de Contas do Tocantins, Portal da Transparência</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Elaborar demonstrações contábeis para entidades públicas</li>
+                <li>Analisar orçamentos públicos do Tocantins</li>
+                <li>Desenvolver um projeto de prestação de contas para uma ONG</li>
+                <li>Visitar órgãos públicos para conhecer a prática contábil</li>
+                <li>Participar de audiências públicas de prestação de contas</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 11: Auditoria e Perícia Contábil (2-3 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Compreender os fundamentos e normas de auditoria</li>
+                <li>Dominar as técnicas e procedimentos de auditoria</li>
+                <li>Entender os princípios e práticas da perícia contábil</li>
+                <li>Elaborar relatórios, pareceres e laudos periciais</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Auditoria:
+                  <ul class="list-disc ml-6">
+                    <li>Normas brasileiras e internacionais de auditoria</li>
+                    <li>Planejamento e procedimentos de auditoria</li>
+                    <li>Papéis de trabalho</li>
+                    <li>Relatórios e pareceres de auditoria</li>
+                    <li>Controles internos</li>
+                  </ul>
+                </li>
+                <li>Perícia Contábil:
+                  <ul class="list-disc ml-6">
+                    <li>Normas brasileiras de perícia contábil</li>
+                    <li>Perícia judicial e extrajudicial</li>
+                    <li>Laudos periciais</li>
+                    <li>Prova pericial</li>
+                  </ul>
+                </li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Auditoria: Conceitos e Aplicações (William Attie), Auditoria Contábil: Teoria e Prática (Silvio Aparecido Crepaldi), Perícia Contábil (Antonio Lopes de Sá), Manual de Perícia Contábil (Alberto Neto)</li>
+                <li><span class="font-semibold">Normas e Legislação:</span> NBC TA, NBC TP, Código de Processo Civil</li>
+                <li><span class="font-semibold">Cursos e Recursos:</span> IBRACON, CFC, Modelos de relatórios e laudos</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Elaborar programas de auditoria para diferentes áreas</li>
+                <li>Simular a execução de procedimentos de auditoria</li>
+                <li>Redigir relatórios e pareceres de auditoria</li>
+                <li>Elaborar laudos periciais baseados em casos reais</li>
+                <li>Acompanhar um perito contábil em suas atividades</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 12: Controladoria e Finanças Corporativas (2-3 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Compreender o papel e as funções da controladoria</li>
+                <li>Dominar as técnicas de gestão financeira corporativa</li>
+                <li>Aplicar ferramentas de planejamento e controle</li>
+                <li>Entender os princípios de governança corporativa</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Controladoria:
+                  <ul class="list-disc ml-6">
+                    <li>Funções da controladoria</li>
+                    <li>Sistemas de informações gerenciais</li>
+                    <li>Balanced Scorecard</li>
+                    <li>Orçamento empresarial</li>
+                    <li>Governança corporativa</li>
+                  </ul>
+                </li>
+                <li>Finanças Corporativas:
+                  <ul class="list-disc ml-6">
+                    <li>Estrutura e custo de capital</li>
+                    <li>Análise de investimentos</li>
+                    <li>Gestão de riscos</li>
+                    <li>Avaliação de empresas</li>
+                    <li>Mercado de capitais</li>
+                  </ul>
+                </li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros:</span> Controladoria: Teoria e Prática (Sandra Figueiredo e Paulo Caggiano), Finanças Corporativas (Stephen Ross, Randolph Westerfield e Jeffrey Jaffe), Princípios de Finanças Corporativas (Richard Brealey, Stewart Myers e Franklin Allen)</li>
+                <li><span class="font-semibold">Cursos e Recursos:</span> FGV, FIPECAFI, Planilhas e modelos financeiros</li>
+                <li><span class="font-semibold">Periódicos e Artigos:</span> Revista Contabilidade & Finanças (USP), Harvard Business Review, Journal of Finance</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Desenvolver um sistema de controle gerencial</li>
+                <li>Elaborar um orçamento empresarial completo</li>
+                <li>Criar um modelo de avaliação de empresas</li>
+                <li>Analisar a viabilidade de projetos de investimento</li>
+                <li>Implementar um Balanced Scorecard para uma empresa fictícia</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 13: Contabilidade Digital e Tecnologias (2-3 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Dominar as ferramentas do Sistema Público de Escrituração Digital (SPED)</li>
+                <li>Compreender as aplicações de novas tecnologias na contabilidade</li>
+                <li>Utilizar ferramentas de análise de dados e business intelligence</li>
+                <li>Entender as tendências tecnológicas na área contábil</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Sistema Público de Escrituração Digital (SPED):
+                  <ul class="list-disc ml-6">
+                    <li>ECD (Escrituração Contábil Digital)</li>
+                    <li>ECF (Escrituração Contábil Fiscal)</li>
+                    <li>EFD (Escrituração Fiscal Digital)</li>
+                    <li>NF-e, CT-e, NFS-e</li>
+                  </ul>
+                </li>
+                <li>Tecnologias Emergentes:
+                  <ul class="list-disc ml-6">
+                    <li>Inteligência artificial e automação na contabilidade</li>
+                    <li>Análise de dados e Business Intelligence</li>
+                    <li>Blockchain e suas aplicações na contabilidade</li>
+                    <li>Cloud computing e contabilidade em nuvem</li>
+                  </ul>
+                </li>
+                <li>Ferramentas Digitais:
+                  <ul class="list-disc ml-6">
+                    <li>Softwares de gestão contábil</li>
+                    <li>Ferramentas de automação de processos</li>
+                    <li>Plataformas de análise de dados</li>
+                  </ul>
+                </li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros e Materiais:</span> Manual de Sobrevivência no Mundo Pós-SPED (Roberto Dias Duarte), Contabilidade Digital (Edson Oliveira), Manuais técnicos do SPED</li>
+                <li><span class="font-semibold">Cursos e Treinamentos:</span> Cursos sobre SPED, Treinamentos em BI, Workshops sobre novas tecnologias</li>
+                <li><span class="font-semibold">Sites e Recursos:</span> Portal do SPED, Blogs de tecnologia contábil, Canais do YouTube</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Gerar e validar arquivos SPED</li>
+                <li>Desenvolver dashboards contábeis em BI</li>
+                <li>Implementar processos de automação contábil</li>
+                <li>Explorar aplicações de blockchain em casos contábeis</li>
+                <li>Participar de hackathons ou desafios de inovação contábil</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Módulo 14: Especialização em Áreas Específicas (3-4 meses)</h3>
+              <h4 class="font-semibold mb-1">Objetivos de Aprendizado:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Aprofundar conhecimentos em áreas específicas da contabilidade</li>
+                <li>Desenvolver habilidades especializadas para setores específicos</li>
+                <li>Compreender as particularidades contábeis de diferentes segmentos</li>
+                <li>Aplicar conhecimentos especializados em casos práticos</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Conteúdos Recomendados (escolher uma ou mais áreas):</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Contabilidade do Agronegócio:
+                  <ul class="list-disc ml-6">
+                    <li>Particularidades do setor agrícola e pecuário</li>
+                    <li>Ativo biológico e produto agrícola (CPC 29)</li>
+                    <li>Contabilidade rural</li>
+                    <li>Aspectos tributários do agronegócio no Tocantins</li>
+                  </ul>
+                </li>
+                <li>Contabilidade Ambiental e Sustentabilidade:
+                  <ul class="list-disc ml-6">
+                    <li>Relatórios de sustentabilidade</li>
+                    <li>Contabilidade de créditos de carbono</li>
+                    <li>Aspectos ambientais relevantes para o Tocantins</li>
+                  </ul>
+                </li>
+                <li>Contabilidade para Pequenas e Médias Empresas:
+                  <ul class="list-disc ml-6">
+                    <li>NBC TG 1000</li>
+                    <li>Particularidades das PMEs no Tocantins</li>
+                    <li>Consultoria contábil para pequenos negócios</li>
+                  </ul>
+                </li>
+              </ol>
+              <h4 class="font-semibold mb-1">Fontes de Estudo:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li><span class="font-semibold">Livros Especializados:</span> Contabilidade do Agronegócio (José Carlos Marion), Contabilidade Ambiental (Maísa de Souza Ribeiro), Contabilidade para Pequenas e Médias Empresas</li>
+                <li><span class="font-semibold">Normas e Pronunciamentos:</span> CPC 29, NBC TG 1000, Normas específicas para cada setor</li>
+                <li><span class="font-semibold">Cursos e Recursos:</span> Cursos de contabilidade rural, Treinamentos em sustentabilidade, Workshops para PMEs</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Práticas Sugeridas:</h4>
+              <ul class="list-disc list-inside text-text-muted">
+                <li>Desenvolver um projeto contábil completo para uma empresa do agronegócio</li>
+                <li>Elaborar um relatório de sustentabilidade</li>
+                <li>Implementar a NBC TG 1000 em uma PME</li>
+                <li>Visitar empresas do setor escolhido para conhecer a prática contábil</li>
+                <li>Desenvolver um manual de procedimentos contábeis para o setor escolhido</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7">
+          <h2 class="text-2xl font-semibold text-secondary mb-4">EDUCAÇÃO CONTINUADA</h2>
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Estratégias para Desenvolvimento Profissional Contínuo</h3>
+              <h4 class="font-semibold mb-1">Objetivos:</h4>
+              <ul class="list-disc list-inside text-text-muted mb-2">
+                <li>Manter-se atualizado com as mudanças na legislação e normas contábeis</li>
+                <li>Desenvolver novas habilidades e competências</li>
+                <li>Expandir a rede de contatos profissionais</li>
+                <li>Obter certificações e especializações adicionais</li>
+              </ul>
+              <h4 class="font-semibold mb-1">Atividades Recomendadas:</h4>
+              <ol class="list-decimal list-inside text-text-muted mb-2">
+                <li>Programa de Educação Profissional Continuada (EPC) do CFC:
+                  <ul class="list-disc ml-6">
+                    <li>Participar de cursos homologados</li>
+                    <li>Acumular pontos conforme exigido</li>
+                    <li>Manter o registro profissional atualizado</li>
+                  </ul>
+                </li>
+                <li>Participação em Eventos e Associações:
+                  <ul class="list-disc ml-6">
+                    <li>Congressos e seminários de contabilidade</li>
+                    <li>Eventos do CRC-TO</li>
+                    <li>Grupos de estudo e discussão</li>
+                    <li>Associações profissionais</li>
+                  </ul>
+                </li>
+                <li>Formação Acadêmica Continuada:
+                  <ul class="list-disc ml-6">
+                    <li>Pós-graduação em áreas específicas</li>
+                    <li>MBA em Contabilidade, Controladoria ou áreas afins</li>
+                    <li>Mestrado ou Doutorado em Ciências Contábeis</li>
+                  </ul>
+                </li>
+                <li>Certificações Profissionais:
+                  <ul class="list-disc ml-6">
+                    <li>Certificações em áreas específicas (IFRS, Auditoria, etc.)</li>
+                    <li>Certificações em tecnologias contábeis</li>
+                    <li>Certificações internacionais (quando aplicável)</li>
+                  </ul>
+                </li>
+                <li>Acompanhamento de Fontes de Informação:
+                  <ul class="list-disc ml-6">
+                    <li>Assinatura de periódicos especializados</li>
+                    <li>Participação em fóruns e grupos online</li>
+                    <li>Acompanhamento de blogs e canais especializados</li>
+                    <li>Leitura regular de publicações do CFC e CRC-TO</li>
+                  </ul>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7">
+          <h2 class="text-2xl font-semibold text-secondary mb-4">Marcos de Aprendizado e Avaliação de Progresso</h2>
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Marcos do Nível Básico</h3>
+              <ul class="list-disc list-inside text-text-muted">
+                <li><span class="font-semibold">Marco 1:</span> Domínio dos conceitos fundamentais da contabilidade</li>
+                <li><span class="font-semibold">Marco 2:</span> Capacidade de realizar escrituração contábil básica</li>
+                <li><span class="font-semibold">Marco 3:</span> Elaboração de demonstrações contábeis simples</li>
+                <li><span class="font-semibold">Marco 4:</span> Compreensão da legislação profissional e ética</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Marcos do Nível Intermediário</h3>
+              <ul class="list-disc list-inside text-text-muted">
+                <li><span class="font-semibold">Marco 5:</span> Elaboração e análise de demonstrações contábeis completas</li>
+                <li><span class="font-semibold">Marco 6:</span> Domínio da apuração de tributos nos diferentes regimes</li>
+                <li><span class="font-semibold">Marco 7:</span> Aplicação de sistemas de custeio em casos práticos</li>
+                <li><span class="font-semibold">Marco 8:</span> Análise financeira completa de empresas</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-primary mb-2">Marcos do Nível Avançado</h3>
+              <ul class="list-disc list-inside text-text-muted">
+                <li><span class="font-semibold">Marco 9:</span> Resolução de casos complexos de contabilidade avançada</li>
+                <li><span class="font-semibold">Marco 10:</span> Elaboração de demonstrações para entidades específicas</li>
+                <li><span class="font-semibold">Marco 11:</span> Produção de relatórios de auditoria e laudos periciais</li>
+                <li><span class="font-semibold">Marco 12:</span> Implementação de sistemas de controle gerencial</li>
+                <li><span class="font-semibold">Marco 13:</span> Domínio das ferramentas digitais e SPED</li>
+                <li><span class="font-semibold">Marco 14:</span> Especialização em uma área específica da contabilidade</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7">
+          <h2 class="text-2xl font-semibold text-secondary mb-4">Considerações Finais</h2>
+          <div class="space-y-8">
+            <div>
+              <p class="text-text-muted">Este roteiro de aprendizado foi desenvolvido para proporcionar uma formação completa em contabilidade, considerando tanto a legislação nacional quanto as especificidades do estado do Tocantins. É importante ressaltar que o aprendizado contábil é um processo contínuo, que exige dedicação, prática e atualização constante.</p>
+              <p class="text-text-muted">Recomendamos adaptar este roteiro às suas necessidades específicas, ritmo de aprendizado e objetivos profissionais. A combinação de estudo teórico com atividades práticas é fundamental para o desenvolvimento de competências sólidas na área contábil.</p>
+              <p class="text-text-muted">Por fim, lembre-se que a contabilidade é uma ciência social aplicada, que evolui constantemente para atender às necessidades das organizações e da sociedade. Mantenha-se sempre atualizado e aberto a novas aprendizagens.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-bg-header-footer text-gray-300 pt-20 pb-10">
+        <div class="container mx-auto px-6 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold text-text-inverted mb-3">Contabilidade<span class="text-accent">Total</span></h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Do Básico ao Avançado<br>Especializado para o Tocantins.<br>Seu guia completo para o sucesso.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-text-inverted mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:text-accent transition duration-200 text-sm">Início</a></li>
+                        <li><a href="legislacao.html" class="hover:text-accent transition duration-200 text-sm">Legislação</a></li>
+                        <li><a href="plano-estudos.html" class="hover:text-accent transition duration-200 text-sm">Plano de Estudos</a></li>
+                        <li><a href="roteiro.html" class="hover:text-accent transition duration-200 text-sm">Roteiro de Aprendizado</a></li>
+                        <li><a href="fontes.html" class="hover:text-accent transition duration-200 text-sm">Fontes e Recursos</a></li>
+                        <li><a href="bibliografia.html" class="hover:text-accent transition duration-200 text-sm">Bibliografia</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-text-inverted mb-4">Recursos Externos</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Conselho Federal de Contabilidade</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">CRC Tocantins</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Comitê de Pronunciamentos Contábeis</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Secretaria da Fazenda do Tocantins</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                &copy; <script>document.write(new Date().getFullYear())</script> ContabilidadeTotal. Todos os direitos reservados.<br>
+                <a href="https://www.linkedin.com/in/luispaulogomes" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Desenvolvido por Luis Paulo G. Andrade</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/global.js"></script>
+</body>
+</html>

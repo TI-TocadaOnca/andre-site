@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Estudos em Contabilidade | ContabilidadeTotal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        :root {
+            --color-primary: #1E40AF;
+            --color-primary-hover: #1D4ED8;
+            --color-secondary: #3B82F6;
+            --color-accent: #60A5FA;
+            --color-text-base: #1F2937;
+            --color-text-muted: #4B5563;
+            --color-text-inverted: #FFFFFF;
+            --color-bg-main: #F9FAFB;
+            --color-bg-card: #FFFFFF;
+            --color-bg-dark: #111827;
+            --color-bg-header-footer: #1F2937;
+            --color-border-light: #E5E7EB;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-text-base);
+            background-color: var(--color-bg-main);
+        }
+        html { scroll-behavior: smooth; }
+        .cta-pulse:hover { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1.02); } 50% { transform: scale(1.05); } }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--color-primary)',
+                        'primary-hover': 'var(--color-primary-hover)',
+                        secondary: 'var(--color-secondary)',
+                        accent: 'var(--color-accent)',
+                        'text-base': 'var(--color-text-base)',
+                        'text-muted': 'var(--color-text-muted)',
+                        'text-inverted': 'var(--color-text-inverted)',
+                        'bg-main': 'var(--color-bg-main)',
+                        'bg-card': 'var(--color-bg-card)',
+                        'bg-dark': 'var(--color-bg-dark)',
+                        'bg-header-footer': 'var(--color-bg-header-footer)',
+                        'border-light': 'var(--color-border-light)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
+    <header x-data="{ mobileMenuOpen: false }" class="bg-bg-header-footer text-text-inverted shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <a href="index.html" class="text-2xl font-bold">Contabilidade<span class="text-accent">Total</span></a>
+                <p class="text-xs text-gray-400">Do Básico ao Avançado - Especializado para o Tocantins</p>
+            </div>
+            <div class="hidden md:flex space-x-7 items-center">
+                <a href="index.html" class="hover:text-accent transition duration-200">Início</a>
+                <a href="legislacao.html" class="hover:text-accent transition duration-200">Legislação</a>
+                <a href="plano-estudos.html" class="hover:text-accent transition duration-200">Plano de Estudos</a>
+                <a href="roteiro.html" class="hover:text-accent transition duration-200">Roteiro de Aprendizado</a>
+                <a href="fontes.html" class="hover:text-accent transition duration-200">Fontes e Recursos</a>
+                <a href="bibliografia.html" class="hover:text-accent transition duration-200">Bibliografia</a>
+            </div>
+            <div class="md:hidden">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path :class="{'hidden': mobileMenuOpen, 'inline-flex': !mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        <path :class="{'hidden': !mobileMenuOpen, 'inline-flex': mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-2" class="md:hidden bg-gray-700" @click.away="mobileMenuOpen = false">
+             <a href="index.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Início</a>
+             <a href="legislacao.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Legislação</a>
+             <a href="plano-estudos.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Plano de Estudos</a>
+             <a href="roteiro.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Roteiro de Aprendizado</a>
+             <a href="fontes.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Fontes e Recursos</a>
+             <a href="bibliografia.html" @click="mobileMenuOpen = false" class="block px-6 py-3 text-white hover:bg-gray-600 transition duration-150">Bibliografia</a>
+        </div>
+    </header>
+    <main class="w-full max-w-3xl px-4 py-10 mx-auto">
+      <h1 class="text-3xl font-bold text-primary mb-8">Plano de Estudos em Contabilidade: Do Básico ao Avançado</h1>
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-secondary mb-4">Estrutura Sequencial de Aprendizado</h2>
+        <p class="mb-8">Este plano de estudos foi desenvolvido para proporcionar uma formação completa em contabilidade, desde os fundamentos básicos até o nível avançado, considerando tanto a legislação nacional quanto as especificidades do estado do Tocantins.</p>
+        <div class="space-y-10">
+          <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7">
+            <h3 class="text-xl font-semibold text-primary mb-4">NÍVEL BÁSICO</h3>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">1. Fundamentos da Contabilidade</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted mb-2">
+                <li>Conceitos Introdutórios
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>História e evolução da contabilidade</li>
+                    <li>Objetivos e usuários da informação contábil</li>
+                    <li>Princípios Fundamentais de Contabilidade</li>
+                    <li>Patrimônio: conceito, componentes e aspectos qualitativos e quantitativos</li>
+                    <li>Equação fundamental do patrimônio</li>
+                  </ul>
+                </li>
+                <li>Escrituração Contábil Básica
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Método das partidas dobradas</li>
+                    <li>Contas contábeis: teoria, estrutura e plano de contas</li>
+                    <li>Lançamentos contábeis e livros contábeis</li>
+                    <li>Balancete de verificação</li>
+                    <li>Apuração do resultado do exercício (simplificada)</li>
+                  </ul>
+                </li>
+                <li>Operações Mercantis
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Operações com mercadorias</li>
+                    <li>Tributos incidentes sobre compras e vendas</li>
+                    <li>Apuração do custo das mercadorias vendidas</li>
+                    <li>Inventário e controle de estoques</li>
+                  </ul>
+                </li>
+                <li>Demonstrações Contábeis Básicas
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Balanço Patrimonial</li>
+                    <li>Demonstração do Resultado do Exercício</li>
+                    <li>Notas explicativas (introdução)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">2. Legislação Profissional e Ética</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted">
+                <li>Decreto-Lei 9.295/1946 (regulamentação da profissão contábil)</li>
+                <li>Código de Ética Profissional do Contador</li>
+                <li>Prerrogativas profissionais</li>
+                <li>Conselho Federal de Contabilidade (CFC) e Conselhos Regionais</li>
+                <li>Registro profissional e educação continuada</li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">3. Matemática Financeira Aplicada à Contabilidade</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted">
+                <li>Juros simples e compostos</li>
+                <li>Descontos</li>
+                <li>Séries de pagamentos</li>
+                <li>Sistemas de amortização</li>
+                <li>Cálculo financeiro em planilhas eletrônicas</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-secondary mb-2">4. Noções de Direito e Legislação Aplicada</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted">
+                <li>Noções de Direito Comercial e Societário</li>
+                <li>Tipos de sociedades empresariais</li>
+                <li>Noções de Direito Tributário</li>
+                <li>Introdução ao Sistema Tributário Nacional</li>
+                <li>Obrigações fiscais principais e acessórias</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7">
+            <h3 class="text-xl font-semibold text-primary mb-4">NÍVEL INTERMEDIÁRIO</h3>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">5. Contabilidade Societária</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted mb-2">
+                <li>Lei das Sociedades por Ações (Lei 6.404/76 e atualizações)
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Estrutura e principais aspectos</li>
+                    <li>Demonstrações financeiras obrigatórias</li>
+                    <li>Critérios de avaliação de ativos e passivos</li>
+                    <li>Patrimônio Líquido: composição e movimentação</li>
+                  </ul>
+                </li>
+                <li>Pronunciamentos Contábeis Básicos
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Estrutura Conceitual (CPC 00)</li>
+                    <li>Apresentação das Demonstrações Contábeis (CPC 26)</li>
+                    <li>Políticas Contábeis, Mudança de Estimativa e Retificação de Erro (CPC 23)</li>
+                    <li>Estoques (CPC 16)</li>
+                  </ul>
+                </li>
+                <li>Demonstrações Contábeis Completas
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Demonstração dos Fluxos de Caixa (DFC)</li>
+                    <li>Demonstração do Valor Adicionado (DVA)</li>
+                    <li>Demonstração das Mutações do Patrimônio Líquido (DMPL)</li>
+                    <li>Demonstração do Resultado Abrangente (DRA)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">6. Contabilidade Fiscal e Tributária</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted mb-2">
+                <li>Tributos Federais
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Imposto de Renda Pessoa Jurídica (IRPJ)</li>
+                    <li>Contribuição Social sobre o Lucro Líquido (CSLL)</li>
+                    <li>PIS e COFINS (regimes cumulativo e não-cumulativo)</li>
+                    <li>Simples Nacional</li>
+                  </ul>
+                </li>
+                <li>Tributos Estaduais e Municipais
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>ICMS (com ênfase na legislação do Tocantins)</li>
+                    <li>ISS</li>
+                  </ul>
+                </li>
+                <li>Planejamento Tributário
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Elisão fiscal</li>
+                    <li>Regimes tributários: Lucro Real, Lucro Presumido e Simples Nacional</li>
+                    <li>Incentivos fiscais (com foco nos disponíveis no Tocantins)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">7. Contabilidade de Custos</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted">
+                <li>Terminologia e classificação dos custos</li>
+                <li>Sistemas de custeio: por absorção, variável e ABC</li>
+                <li>Análise custo-volume-lucro</li>
+                <li>Formação de preço de venda</li>
+                <li>Departamentalização</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-secondary mb-2">8. Análise das Demonstrações Contábeis</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted">
+                <li>Análise horizontal e vertical</li>
+                <li>Indicadores econômico-financeiros
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Liquidez</li>
+                    <li>Endividamento</li>
+                    <li>Rentabilidade</li>
+                    <li>Atividade</li>
+                  </ul>
+                </li>
+                <li>Análise do capital de giro</li>
+                <li>Alavancagem financeira e operacional</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bg-bg-card rounded-xl shadow-md border border-border-light p-7">
+            <h3 class="text-xl font-semibold text-primary mb-4">NÍVEL AVANÇADO</h3>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">9. Contabilidade Avançada</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted mb-2">
+                <li>Combinação de Negócios
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Fusões, cisões e incorporações</li>
+                    <li>Avaliação de investimentos societários</li>
+                    <li>Consolidação das demonstrações contábeis</li>
+                    <li>Equivalência patrimonial</li>
+                  </ul>
+                </li>
+                <li>Tópicos Especiais
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Redução ao valor recuperável de ativos (Impairment)</li>
+                    <li>Ajuste a valor presente</li>
+                    <li>Propriedade para investimento</li>
+                    <li>Ativos biológicos e produtos agrícolas (relevante para o agronegócio no Tocantins)</li>
+                    <li>Instrumentos financeiros</li>
+                  </ul>
+                </li>
+                <li>Contabilidade Internacional
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Normas Internacionais de Contabilidade (IFRS)</li>
+                    <li>Convergência das normas brasileiras às internacionais</li>
+                    <li>CPC e IASB: estrutura e funcionamento</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">10. Contabilidade Governamental e do Terceiro Setor</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted mb-2">
+                <li>Contabilidade Pública
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>MCASP (Manual de Contabilidade Aplicada ao Setor Público)</li>
+                    <li>Lei 4.320/64 e Lei de Responsabilidade Fiscal</li>
+                    <li>Orçamento público</li>
+                    <li>Demonstrações contábeis aplicadas ao setor público</li>
+                    <li>Particularidades da contabilidade pública no estado do Tocantins</li>
+                  </ul>
+                </li>
+                <li>Contabilidade do Terceiro Setor
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Aspectos legais das entidades sem fins lucrativos</li>
+                    <li>Imunidades e isenções tributárias</li>
+                    <li>Prestação de contas e transparência</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">11. Auditoria e Perícia Contábil</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted mb-2">
+                <li>Auditoria
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Normas brasileiras e internacionais de auditoria</li>
+                    <li>Planejamento e procedimentos de auditoria</li>
+                    <li>Papéis de trabalho</li>
+                    <li>Relatórios e pareceres de auditoria</li>
+                    <li>Controles internos</li>
+                  </ul>
+                </li>
+                <li>Perícia Contábil
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Normas brasileiras de perícia contábil</li>
+                    <li>Perícia judicial e extrajudicial</li>
+                    <li>Laudos periciais</li>
+                    <li>Prova pericial</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">12. Controladoria e Finanças Corporativas</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted mb-2">
+                <li>Controladoria
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Funções da controladoria</li>
+                    <li>Sistemas de informações gerenciais</li>
+                    <li>Balanced Scorecard</li>
+                    <li>Orçamento empresarial</li>
+                    <li>Governança corporativa</li>
+                  </ul>
+                </li>
+                <li>Finanças Corporativas
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Estrutura e custo de capital</li>
+                    <li>Análise de investimentos</li>
+                    <li>Gestão de riscos</li>
+                    <li>Avaliação de empresas</li>
+                    <li>Mercado de capitais</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-secondary mb-2">13. Contabilidade Digital e Tecnologias</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted mb-2">
+                <li>Sistema Público de Escrituração Digital (SPED)
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>ECD (Escrituração Contábil Digital)</li>
+                    <li>ECF (Escrituração Contábil Fiscal)</li>
+                    <li>EFD (Escrituração Fiscal Digital)</li>
+                    <li>NF-e, CT-e, NFS-e</li>
+                  </ul>
+                </li>
+                <li>Inteligência artificial e automação na contabilidade</li>
+                <li>Análise de dados e Business Intelligence</li>
+                <li>Blockchain e suas aplicações na contabilidade</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-secondary mb-2">14. Especialização em Áreas Específicas</h4>
+              <ul class="list-disc list-inside space-y-1 text-text-muted">
+                <li>Contabilidade do Agronegócio
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Particularidades do setor agrícola e pecuário</li>
+                    <li>Ativo biológico e produto agrícola (CPC 29)</li>
+                    <li>Contabilidade rural</li>
+                    <li>Aspectos tributários do agronegócio no Tocantins</li>
+                  </ul>
+                </li>
+                <li>Contabilidade Ambiental e Sustentabilidade
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>Relatórios de sustentabilidade</li>
+                    <li>Contabilidade de créditos de carbono</li>
+                    <li>Aspectos ambientais relevantes para o Tocantins</li>
+                  </ul>
+                </li>
+                <li>Contabilidade para Pequenas e Médias Empresas
+                  <ul class="list-disc ml-6 space-y-1">
+                    <li>NBC TG 1000</li>
+                    <li>Particularidades das PMEs no Tocantins</li>
+                    <li>Consultoria contábil para pequenos negócios</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-bg-header-footer text-gray-300 pt-20 pb-10">
+        <div class="container mx-auto px-6 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold text-text-inverted mb-3">Contabilidade<span class="text-accent">Total</span></h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Do Básico ao Avançado<br>Especializado para o Tocantins.<br>Seu guia completo para o sucesso.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-text-inverted mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="index.html" class="hover:text-accent transition duration-200 text-sm">Início</a></li>
+                        <li><a href="legislacao.html" class="hover:text-accent transition duration-200 text-sm">Legislação</a></li>
+                        <li><a href="plano-estudos.html" class="hover:text-accent transition duration-200 text-sm">Plano de Estudos</a></li>
+                        <li><a href="roteiro.html" class="hover:text-accent transition duration-200 text-sm">Roteiro de Aprendizado</a></li>
+                        <li><a href="fontes.html" class="hover:text-accent transition duration-200 text-sm">Fontes e Recursos</a></li>
+                        <li><a href="bibliografia.html" class="hover:text-accent transition duration-200 text-sm">Bibliografia</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-text-inverted mb-4">Recursos Externos</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Conselho Federal de Contabilidade</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">CRC Tocantins</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Comitê de Pronunciamentos Contábeis</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Secretaria da Fazenda do Tocantins</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                &copy; <script>document.write(new Date().getFullYear())</script> ContabilidadeTotal. Todos os direitos reservados.<br>
+                <a href="https://www.linkedin.com/in/luispaulogomes" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition duration-200 text-sm">Desenvolvido por Luis Paulo G. Andrade</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/global.js"></script>
+</body>
+</html>
